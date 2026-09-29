@@ -9,6 +9,20 @@ const Module = require("../models/Module");
 
 const router = express.Router();
 
+// TEST ROUTE
+router.get(
+  "/test",
+  (req, res) => {
+    res.json({
+      message:
+        "Progress route is working"
+    });
+  }
+);
+
+
+
+
 
 // GET COURSE PROGRESS - STUDENT ONLY
 router.get(
@@ -198,18 +212,6 @@ router.post(
         error: error.message
       });
     }
-  }
-);
-
-
-// TEST ROUTE
-router.get(
-  "/test",
-  (req, res) => {
-    res.json({
-      message:
-        "Progress route is working"
-    });
   }
 );
 
