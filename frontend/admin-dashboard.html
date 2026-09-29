@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="LMS administrator dashboard."
+    >
+
+    <title>LMS — Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+        <!-- =================================================
+             ADMIN DASHBOARD HERO
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        Administration
+
+                    </span>
+
+
+                    <h1 id="adminDashboardGreeting">
+                        Admin Dashboard
+                    </h1>
+
+
+                    <p>
+                        Manage students, courses,
+                        modules, assignments and submissions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ADMIN DASHBOARD
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <!-- Statistics -->
+
+                <div class="stat-grid-3">
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Total Students
+                            </span>
+
+
+                            <strong
+                                id="totalStudents"
+                                class="metric-value"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Total Courses
+                            </span>
+
+
+                            <strong
+                                id="totalCourses"
+                                class="metric-value"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-layer-group"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Total Modules
+                            </span>
+
+
+                            <strong
+                                id="totalModules"
+                                class="metric-value"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-file-lines"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Assignments
+                            </span>
+
+
+                            <strong
+                                id="totalAssignments"
+                                class="metric-value"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-file-circle-check"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Submissions
+                            </span>
+
+
+                            <strong
+                                id="totalSubmissions"
+                                class="metric-value"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <!-- Main Admin Layout -->
+
+                <div class="dashboard-layout">
+
+
+                    <!-- Sidebar -->
+
+                    <aside class="dashboard-sidebar">
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Management
+                                    </span>
+
+                                    <h3>
+                                        Quick Access
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="dashboard-nav">
+
+
+                                <a
+                                    href="admin-dashboard.html"
+                                    class="dashboard-nav-link active"
+                                >
+
+                                    <i class="fa-solid fa-gauge-high"></i>
+
+                                    <span>
+                                        Dashboard
+                                    </span>
+
+                                </a>
+
+
+
+                                <a
+                                    href="courses.html"
+                                    class="dashboard-nav-link"
+                                >
+
+                                    <i class="fa-solid fa-book-open"></i>
+
+                                    <span>
+                                        Courses
+                                    </span>
+
+                                </a>
+
+
+
+                                <a
+                                    href="assignments.html"
+                                    class="dashboard-nav-link"
+                                >
+
+                                    <i class="fa-solid fa-file-lines"></i>
+
+                                    <span>
+                                        Assignments
+                                    </span>
+
+                                </a>
+
+
+
+                                <a
+                                    href="index.html"
+                                    class="dashboard-nav-link"
+                                >
+
+                                    <i class="fa-solid fa-house"></i>
+
+                                    <span>
+                                        Website
+                                    </span>
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+
+
+                    <!-- Admin Main -->
+
+                    <div class="dashboard-main">
+
+
+                        <!-- Student Overview -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Students
+                                    </span>
+
+                                    <h2>
+                                        Student Overview
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                id="studentOverview"
+                                class="content-stack"
+                            >
+
+                                <div class="loading-state">
+
+                                    <div class="loading-spinner"></div>
+
+                                    <p>
+                                        Loading student data...
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Admin Status -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        System
+                                    </span>
+
+                                    <h2>
+                                        LMS Overview
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                id="adminStatus"
+                                class="empty-state"
+                            >
+
+                                <div class="empty-state-icon">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                </div>
+
+
+                                <h3>
+                                    Admin access active
+                                </h3>
+
+
+                                <p>
+                                    You have administrator access
+                                    to the LMS.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Admin Dashboard JavaScript -->
+
+    <script src="js/admin-dashboard.js"></script>
+
+
+</body>
+
+</html>

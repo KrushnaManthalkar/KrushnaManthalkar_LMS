@@ -1043,27 +1043,122 @@ p {
    AUTH PAGES
 ========================================================= */
 
+/* =========================================================
+   AUTH / LOGIN PAGE
+========================================================= */
+
 .auth-page {
     min-height: calc(100vh - 78px);
-    display: grid;
-    place-items: center;
-    padding: 70px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 55px 20px 70px;
+
     background:
         radial-gradient(
-            circle at 20% 30%,
-            rgba(124, 92, 255, 0.13),
-            transparent 32%
+            circle at 50% 40%,
+            rgba(124, 92, 255, 0.10),
+            transparent 35%
         ),
         radial-gradient(
-            circle at 80% 70%,
-            rgba(96, 165, 250, 0.06),
-            transparent 28%
+            circle at 15% 80%,
+            rgba(96, 165, 250, 0.05),
+            transparent 30%
         ),
         var(--bg-main);
 }
 
+/* Remove the global container width restriction
+   from affecting the auth layout */
+.auth-page .container {
+    width: 100%;
+    max-width: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* Actual login card wrapper */
 .auth-wrapper {
-    width: min(100%, 470px);
+    width: 100%;
+    max-width: 470px;
+    margin: 0 auto;
+}
+
+.auth-card {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 38px;
+
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+
+    background: rgba(17, 21, 33, 0.94);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h1 {
+    font-size: 2rem;
+}
+
+.auth-header p {
+    margin-top: 8px;
+}
+
+.auth-footer {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.auth-footer a {
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   AUTH RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .auth-page {
+        min-height: calc(100vh - 70px);
+        padding: 35px 16px 50px;
+    }
+
+    .auth-page .container {
+        padding: 0;
+    }
+
+    .auth-wrapper {
+        max-width: 100%;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+
+    .auth-header {
+        margin-bottom: 25px;
+    }
+
+    .auth-header h1 {
+        font-size: 1.8rem;
+    }
+
 }
 
 .auth-card {
@@ -3641,4 +3736,1597 @@ main {
     .cta-card {
         padding: 28px 18px;
     }
+}
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+.admin-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+
+.admin-dashboard-grid .metric-card {
+    min-width: 0;
+}
+
+
+@media (max-width: 1100px) {
+
+    .admin-dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .admin-dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .admin-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   COURSE DETAIL — ENROLLMENT CARD
+========================================================= */
+
+#enrollCard {
+    display: block;
+    position: sticky;
+    top: 100px;
+
+    padding: 28px;
+
+    min-height: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 21, 33, 0.98),
+            rgba(22, 27, 42, 0.96)
+        );
+
+    border: 1px solid var(--border-light);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.20);
+}
+
+
+#enrollCard .detail-card-icon {
+    margin-bottom: 18px;
+}
+
+
+.enrollment-card-content {
+    width: 100%;
+}
+
+
+.enrollment-card-content h3 {
+    margin-top: 8px;
+    font-size: 1.35rem;
+    line-height: 1.3;
+}
+
+
+.enrollment-details {
+    display: grid;
+    gap: 12px;
+
+    margin: 24px 0;
+    padding: 18px 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+
+.enrollment-details div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--text-muted);
+
+    font-size: 0.86rem;
+}
+
+
+.enrollment-details i {
+    width: 18px;
+
+    color: var(--primary-light);
+
+    text-align: center;
+}
+
+
+#enrollCard .btn-block {
+    width: 100%;
+    justify-content: center;
+}
+
+
+.enrollment-message {
+    margin: 14px 0;
+}
+
+
+.enrollment-message:empty {
+    display: none;
+}
+
+
+/* =========================================================
+   COURSE DETAIL LAYOUT
+========================================================= */
+
+.content-grid {
+    align-items: start;
+}
+
+
+.content-grid > .content-stack {
+    min-width: 0;
+}
+
+
+.content-grid > #enrollCard {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   COURSE DETAIL MOBILE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    #enrollCard {
+        position: static;
+        margin-top: 0;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    #enrollCard {
+        order: -1;
+    }
+
+
+    .detail-hero {
+        padding: 35px 0;
+    }
+
+
+    .detail-hero h1 {
+        font-size: clamp(
+            2rem,
+            8vw,
+            3rem
+        );
+    }
+
+
+    .module-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+
+    .module-actions {
+        width: 100%;
+        margin-left: 53px;
+    }
+
+}
+
+/* =========================================================
+   COURSE DETAILS — VISUAL POLISH
+========================================================= */
+
+/* ---------------------------------------------------------
+   Course Hero
+--------------------------------------------------------- */
+
+.detail-hero {
+    padding: 38px 0 42px;
+}
+
+.detail-hero-content {
+    max-width: 760px;
+}
+
+.detail-hero h1 {
+    margin-top: 10px;
+
+    /* Smaller and more professional */
+    font-size: clamp(2rem, 3.2vw, 2.9rem);
+
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+
+    max-width: 720px;
+}
+
+.detail-hero-description {
+    margin-top: 14px;
+
+    max-width: 680px;
+
+    font-size: 0.95rem;
+    line-height: 1.65;
+
+    color: var(--text-secondary);
+}
+
+.detail-meta {
+    margin-top: 18px;
+}
+
+
+/* ---------------------------------------------------------
+   Main Course Content
+--------------------------------------------------------- */
+
+.content-grid {
+    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.85fr);
+
+    gap: 28px;
+
+    align-items: start;
+}
+
+.content-stack {
+    gap: 28px;
+}
+
+
+/* ---------------------------------------------------------
+   Course Overview / Learning Path / Experience Cards
+--------------------------------------------------------- */
+
+.content-stack > .panel {
+    padding: 28px;
+}
+
+
+/* Course overview */
+
+.content-stack > .panel:first-child {
+    padding-bottom: 30px;
+}
+
+.content-stack > .panel:first-child h2 {
+    margin-top: 10px;
+
+    font-size: 1.45rem;
+    line-height: 1.3;
+}
+
+.content-stack > .panel:first-child p {
+    margin-top: 12px;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+
+    color: var(--text-secondary);
+}
+
+
+/* ---------------------------------------------------------
+   Learning Path
+--------------------------------------------------------- */
+
+.content-stack > .panel:nth-child(2) {
+    padding-bottom: 30px;
+}
+
+.content-stack > .panel:nth-child(2) .toolbar {
+    margin-bottom: 22px;
+}
+
+.content-stack > .panel:nth-child(2) h3 {
+    margin-top: 9px;
+
+    font-size: 1.45rem;
+    line-height: 1.3;
+}
+
+.content-stack > .panel:nth-child(2) .text-muted {
+    margin-top: 7px;
+
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+/* ---------------------------------------------------------
+   Module Item
+--------------------------------------------------------- */
+
+.module-list {
+    gap: 12px;
+}
+
+.module-item {
+    padding: 17px 18px;
+
+    min-height: 78px;
+}
+
+.module-content h3 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+.module-content p {
+    margin-top: 4px;
+
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+
+/* ---------------------------------------------------------
+   Learning Experience
+--------------------------------------------------------- */
+
+.content-stack > .panel:nth-child(3) {
+    padding-bottom: 32px;
+}
+
+.content-stack > .panel:nth-child(3) h3 {
+    margin-top: 9px;
+
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+.content-stack > .panel:nth-child(3) > p {
+    margin-top: 12px;
+
+    max-width: 700px;
+
+    font-size: 0.92rem;
+    line-height: 1.7;
+
+    color: var(--text-secondary);
+}
+
+
+/* ---------------------------------------------------------
+   Learning Experience inner cards
+--------------------------------------------------------- */
+
+.content-stack > .panel:nth-child(3) .grid-2 {
+    margin-top: 24px;
+}
+
+.content-stack > .panel:nth-child(3) .card-body {
+    padding: 20px;
+}
+
+.content-stack > .panel:nth-child(3) .card-body h4 {
+    margin-top: 14px;
+
+    font-size: 1rem;
+}
+
+.content-stack > .panel:nth-child(3) .card-body p {
+    margin-top: 8px;
+
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+
+/* ---------------------------------------------------------
+   Better vertical rhythm
+--------------------------------------------------------- */
+
+.detail-hero + .section {
+    padding-top: 30px;
+}
+
+
+/* ---------------------------------------------------------
+   Tablet
+--------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+
+    .detail-hero {
+        padding: 34px 0;
+    }
+
+    .detail-hero h1 {
+        font-size: clamp(
+            2rem,
+            5vw,
+            2.6rem
+        );
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Mobile
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .detail-hero {
+        padding: 30px 0 34px;
+    }
+
+    .detail-hero h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+    }
+
+    .detail-hero-description {
+        font-size: 0.9rem;
+    }
+
+    .content-stack {
+        gap: 20px;
+    }
+
+    .content-stack > .panel {
+        padding: 22px;
+    }
+
+    .content-stack > .panel h2,
+    .content-stack > .panel h3 {
+        font-size: 1.25rem;
+    }
+
+    .module-item {
+        padding: 15px;
+    }
+
+}
+
+/* =========================================================
+   COURSE DETAILS — FINAL HERO SPACING
+========================================================= */
+
+/* Full-width background is intentional,
+   but content stays inside the normal container */
+.detail-hero {
+    padding: 36px 0 38px;
+
+    background:
+        radial-gradient(
+            circle at 18% 25%,
+            rgba(124, 92, 255, 0.12),
+            transparent 34%
+        ),
+        var(--bg-secondary);
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* Keep hero content aligned with the rest of the page */
+.detail-hero .container {
+    width: min(
+        100% - 40px,
+        var(--container-width, 1180px)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Hero content should not become too wide */
+.detail-hero-content {
+    max-width: 760px;
+}
+
+
+/* Main course title */
+.detail-hero h1 {
+    margin-top: 12px;
+
+    max-width: 700px;
+
+    font-size: clamp(
+        2rem,
+        3vw,
+        2.75rem
+    );
+
+    line-height: 1.14;
+
+    letter-spacing: -0.02em;
+}
+
+
+/* Description */
+.detail-hero-description {
+    max-width: 650px;
+
+    margin-top: 14px;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    color: var(--text-secondary);
+}
+
+
+/* Metadata */
+.detail-hero .detail-meta {
+    margin-top: 17px;
+
+    gap: 10px 20px;
+}
+
+
+/* =========================================================
+   BETTER SPACE BEFORE MAIN CONTENT
+========================================================= */
+
+.detail-hero + .section {
+    padding-top: 30px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .detail-hero {
+        padding: 30px 0 34px;
+    }
+
+    .detail-hero .container {
+        width: min(
+            100% - 32px,
+            1180px
+        );
+    }
+
+    .detail-hero h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+    }
+
+}
+
+/* =========================================================
+   ASSIGNMENTS PAGE — FINAL SPACING & TYPOGRAPHY
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   Assignments Hero
+--------------------------------------------------------- */
+
+.page-hero {
+    padding: 48px 0 38px;
+}
+
+
+.page-hero h1 {
+    margin-top: 10px;
+
+    font-size: clamp(
+        2.2rem,
+        3.2vw,
+        2.9rem
+    );
+
+    line-height: 1.15;
+
+    letter-spacing: -0.02em;
+}
+
+
+.page-hero p {
+    margin-top: 12px;
+
+    max-width: 680px;
+
+    font-size: 0.95rem;
+
+    line-height: 1.65;
+}
+
+
+/* ---------------------------------------------------------
+   Assignment Section
+--------------------------------------------------------- */
+
+/*
+ * The global .section has 100px padding.
+ * That's too much for a dashboard-style page.
+ */
+
+.page-hero + .section {
+    padding-top: 42px;
+    padding-bottom: 70px;
+}
+
+
+/* ---------------------------------------------------------
+   Available Assignments Header
+--------------------------------------------------------- */
+
+.page-hero + .section > .container > .toolbar {
+    margin-bottom: 20px;
+}
+
+
+.page-hero + .section > .container > .toolbar h2 {
+    margin-top: 8px;
+
+    font-size: 1.9rem;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.015em;
+}
+
+
+/* ---------------------------------------------------------
+   My Courses button
+--------------------------------------------------------- */
+
+.page-hero + .section > .container > .toolbar
+.toolbar-actions {
+    margin-top: 0;
+}
+
+
+/* ---------------------------------------------------------
+   Assignment Filters
+--------------------------------------------------------- */
+
+#assignmentSearch {
+    max-width: 420px;
+}
+
+
+#assignmentCourseFilter {
+    min-width: 285px;
+}
+
+
+.page-hero + .section > .container > .panel {
+    padding: 18px 20px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Filter toolbar */
+.page-hero + .section > .container > .panel .toolbar {
+    margin-bottom: 0;
+
+    gap: 18px;
+}
+
+
+/* ---------------------------------------------------------
+   Assignment List
+--------------------------------------------------------- */
+
+#assignmentsContainer {
+    gap: 16px;
+}
+
+
+#assignmentsContainer .assignment-card {
+    padding: 22px 24px;
+}
+
+
+#assignmentsContainer .assignment-card h3 {
+    margin-top: 10px;
+
+    font-size: 1.25rem;
+
+    line-height: 1.35;
+}
+
+
+#assignmentsContainer .assignment-card p {
+    margin-top: 7px;
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+}
+
+
+/* Assignment metadata */
+
+#assignmentsContainer .assignment-meta {
+    margin-top: 16px;
+
+    gap: 8px 16px;
+}
+
+
+#assignmentsContainer .assignment-meta span {
+    font-size: 0.82rem;
+}
+
+
+/* ---------------------------------------------------------
+   Mobile
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .page-hero {
+        padding: 36px 0 32px;
+    }
+
+
+    .page-hero h1 {
+        font-size: 2.15rem;
+    }
+
+
+    .page-hero + .section {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+
+    .page-hero + .section > .container > .toolbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 16px;
+    }
+
+
+    .page-hero + .section > .container > .toolbar h2 {
+        font-size: 1.55rem;
+    }
+
+
+    .page-hero + .section > .container > .panel {
+        padding: 15px;
+    }
+
+
+    .page-hero + .section > .container > .panel .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .search-box {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    #assignmentCourseFilter {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    #assignmentsContainer .assignment-card {
+        padding: 18px;
+    }
+
+}
+
+/* =========================================================
+   HOME HERO — FLOATING CARDS
+   Desktop: separate side cards
+   Mobile: hidden
+========================================================= */
+
+.home-hero-visual {
+    position: relative;
+}
+
+
+/* -------------------------
+   Base floating card
+------------------------- */
+
+.hero-floating-card {
+    position: absolute;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: max-content;
+    min-width: 145px;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+
+    background: rgba(17, 21, 33, 0.96);
+
+    box-shadow: var(--shadow-md);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* -------------------------
+   Assignment
+   Completely outside the
+   dashboard — no overlap
+------------------------- */
+
+.assignment-floating {
+    top: 65px;
+
+    right: -155px;
+}
+
+
+/* -------------------------
+   Weekly progress
+   Completely outside the
+   dashboard — no overlap
+------------------------- */
+
+.progress-floating {
+    bottom: 65px;
+
+    left: -155px;
+}
+
+
+/* -------------------------
+   Icon
+------------------------- */
+
+.floating-card-icon {
+    width: 35px;
+    height: 35px;
+
+    flex: 0 0 35px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    color: var(--primary-light);
+
+    background: rgba(124, 92, 255, 0.12);
+}
+
+
+/* -------------------------
+   Text
+------------------------- */
+
+.hero-floating-card span,
+.hero-floating-card strong {
+    display: block;
+}
+
+.hero-floating-card span {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+}
+
+.hero-floating-card strong {
+    margin-top: 2px;
+
+    color: var(--text-primary);
+
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1150px) {
+
+    /*
+     * There isn't enough horizontal space
+     * for outside floating cards.
+     */
+
+    .hero-floating-card {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .hero-floating-card {
+        display: none;
+    }
+
+}
+
+/* =========================================================
+   HOME — WORKFLOW STEPS
+========================================================= */
+
+/* All 4 workflow cards in one row */
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+
+/* Each workflow card */
+.workflow-step {
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+
+    padding: 24px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    background: var(--surface);
+}
+
+
+/* Number + icon on the SAME row */
+.workflow-step > .workflow-number,
+.workflow-step > .workflow-icon {
+    display: inline-grid;
+
+    vertical-align: middle;
+
+    margin: 0;
+}
+
+
+/* Number */
+.workflow-number {
+    width: 40px;
+    height: 40px;
+
+    margin-right: 8px !important;
+
+    border-radius: 11px;
+}
+
+
+/* Icon */
+.workflow-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 11px;
+}
+
+
+/* Heading */
+.workflow-step h3 {
+    margin-top: 20px;
+
+    font-size: 1.15rem;
+    line-height: 1.3;
+}
+
+
+/* Description */
+.workflow-step p {
+    margin-top: 8px;
+
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+
+
+/* The connector elements are not needed */
+.workflow-line {
+    display: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .workflow-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .workflow-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   HOME HERO — FINAL FLOATING CARDS
+========================================================= */
+
+.home-hero-visual {
+    position: relative;
+    overflow: visible;
+}
+
+
+/* ---------------------------------------------------------
+   Base
+--------------------------------------------------------- */
+
+.hero-floating-card {
+    position: absolute;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: max-content;
+    min-width: 145px;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+
+    background: rgba(17, 21, 33, 0.97);
+
+    box-shadow: var(--shadow-md);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* ---------------------------------------------------------
+   ASSIGNMENT — FLOATING ABOVE DASHBOARD
+--------------------------------------------------------- */
+
+.assignment-floating {
+    top: -34px;
+    right: 24px;
+}
+
+
+/* ---------------------------------------------------------
+   WEEKLY PROGRESS — FLOATING BELOW DASHBOARD
+--------------------------------------------------------- */
+
+.progress-floating {
+    bottom: -30px;
+    left: 24px;
+}
+
+
+/* ---------------------------------------------------------
+   Icon
+--------------------------------------------------------- */
+
+.floating-card-icon {
+    width: 35px;
+    height: 35px;
+
+    flex: 0 0 35px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    color: var(--primary-light);
+
+    background: rgba(124, 92, 255, 0.12);
+}
+
+
+/* ---------------------------------------------------------
+   Text
+--------------------------------------------------------- */
+
+.hero-floating-card span,
+.hero-floating-card strong {
+    display: block;
+}
+
+.hero-floating-card span {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    line-height: 1.3;
+}
+
+.hero-floating-card strong {
+    margin-top: 2px;
+
+    color: var(--text-primary);
+
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1150px) {
+
+    .assignment-floating {
+        top: -28px;
+        right: 18px;
+    }
+
+    .progress-floating {
+        bottom: -25px;
+        left: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .hero-floating-card {
+        display: none;
+    }
+
+}
+
+/* =========================================================
+   SUBMISSION PAGE — FINAL UI POLISH
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   Page Hero
+--------------------------------------------------------- */
+
+.submission-page .page-hero {
+    padding: 48px 0 38px;
+}
+
+
+.submission-page .page-hero h1 {
+    margin-top: 10px;
+
+    font-size: clamp(
+        2.2rem,
+        3.2vw,
+        2.9rem
+    );
+
+    line-height: 1.15;
+}
+
+
+.submission-page .page-hero p {
+    margin-top: 12px;
+
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+
+/* ---------------------------------------------------------
+   Main Submission Section
+--------------------------------------------------------- */
+
+/*
+ * Global .section = 100px.
+ * Too much for this page.
+ */
+
+.submission-page main > .section {
+    padding: 42px 0 65px;
+}
+
+
+/* ---------------------------------------------------------
+   Main Two-column Layout
+--------------------------------------------------------- */
+
+.submission-page .content-grid {
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(300px, 0.75fr);
+
+    gap: 26px;
+
+    align-items: start;
+}
+
+
+/* ---------------------------------------------------------
+   Main Panels
+--------------------------------------------------------- */
+
+.submission-page .content-grid > .panel {
+    min-width: 0;
+}
+
+
+.submission-page .panel-header {
+    padding: 24px 26px;
+}
+
+
+.submission-page .panel-header h2 {
+    margin-top: 8px;
+
+    font-size: 1.75rem;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.015em;
+}
+
+
+/* ---------------------------------------------------------
+   Submission Form
+--------------------------------------------------------- */
+
+.submission-page #submissionForm {
+    padding: 24px 26px 28px;
+}
+
+
+.submission-page .form-group {
+    margin-bottom: 20px;
+}
+
+
+.submission-page .form-label {
+    margin-bottom: 8px;
+}
+
+
+.submission-page .form-help {
+    margin-top: 7px;
+
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+
+/* ---------------------------------------------------------
+   Submission Guide
+--------------------------------------------------------- */
+
+.submission-page .content-grid
+    > .panel:nth-child(2)
+    .content-stack {
+
+    gap: 12px;
+}
+
+
+.submission-page .content-grid
+    > .panel:nth-child(2)
+    .detail-card {
+
+    padding: 20px;
+
+    gap: 14px;
+
+    margin-top: 0;
+}
+
+
+.submission-page .content-grid
+    > .panel:nth-child(2)
+    .detail-card h3 {
+
+    font-size: 1.05rem;
+
+    line-height: 1.35;
+}
+
+
+.submission-page .content-grid
+    > .panel:nth-child(2)
+    .detail-card p {
+
+    margin-top: 5px;
+
+    font-size: 0.82rem;
+
+    line-height: 1.6;
+}
+
+
+/* Smaller guide icons */
+
+.submission-page .detail-card-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-basis: 42px;
+}
+
+
+/* ---------------------------------------------------------
+   Submission History
+--------------------------------------------------------- */
+
+/*
+ * The history panel should sit close to the
+ * submission form instead of getting another
+ * huge section-sized gap.
+ */
+
+.submission-page main > .section
+    > .container
+    > .panel {
+
+    margin-top: 28px;
+}
+
+
+.submission-page
+    #submissionHistory {
+
+    padding: 20px 22px 24px;
+
+    gap: 14px;
+}
+
+
+/* History heading */
+
+.submission-page
+    #submissionHistory
+    + * {
+    margin-top: 0;
+}
+
+
+/* ---------------------------------------------------------
+   History Assignment Card
+--------------------------------------------------------- */
+
+.submission-page
+    #submissionHistory
+    .assignment-card {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+}
+
+
+/*
+ * Remove the large standalone document icon.
+ */
+
+.submission-page
+    #submissionHistory
+    .assignment-card-icon {
+
+    display: none;
+}
+
+
+.submission-page
+    #submissionHistory
+    .assignment-card-content {
+
+    min-width: 0;
+}
+
+
+.submission-page
+    #submissionHistory
+    .assignment-card-top {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 7px;
+}
+
+
+.submission-page
+    #submissionHistory
+    .assignment-card h3 {
+
+    margin-top: 0;
+
+    font-size: 1.15rem;
+
+    line-height: 1.35;
+}
+
+
+.submission-page
+    #submissionHistory
+    .assignment-card p {
+
+    margin-top: 5px;
+
+    font-size: 0.82rem;
+}
+
+
+.submission-page
+    #submissionHistory
+    .assignment-meta {
+
+    margin-top: 12px;
+
+    gap: 8px 16px;
+}
+
+
+.submission-page
+    #submissionHistory
+    .assignment-meta span {
+
+    font-size: 0.78rem;
+
+    line-height: 1.5;
+}
+
+
+.submission-page
+    #submissionHistory
+    .assignment-card-status {
+
+    flex-shrink: 0;
+}
+
+
+/* ---------------------------------------------------------
+   Mobile
+--------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+    .submission-page .page-hero {
+        padding: 36px 0 30px;
+    }
+
+
+    .submission-page main > .section {
+        padding: 30px 0 50px;
+    }
+
+
+    .submission-page .content-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    .submission-page .panel-header {
+        padding: 20px;
+    }
+
+
+    .submission-page .panel-header h2 {
+        font-size: 1.45rem;
+    }
+
+
+    .submission-page #submissionForm {
+        padding: 20px;
+    }
+
+
+    .submission-page main > .section
+        > .container
+        > .panel {
+
+        margin-top: 20px;
+    }
+
+
+    .submission-page
+        #submissionHistory {
+
+        padding: 16px;
+    }
+
+
+    .submission-page
+        #submissionHistory
+        .assignment-card {
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        padding: 18px;
+    }
+
+
+    .submission-page
+        #submissionHistory
+        .assignment-card-status {
+
+        width: 100%;
+    }
+
+
+    .submission-page
+        #submissionHistory
+        .assignment-card-status
+        .btn {
+
+        width: 100%;
+    }
+
 }

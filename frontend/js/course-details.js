@@ -99,44 +99,270 @@ async function loadCourseDetails() {
    ========================================================= */
 
 function renderCourseDetails(course) {
-    const title = LMS.escapeHTML(course.title || "Untitled Course");
-    const description = LMS.escapeHTML(course.description || "No course description available.");
-    const category = LMS.escapeHTML(course.category || "General");
-    const difficulty = LMS.escapeHTML(course.difficulty || "Beginner");
-    const duration = LMS.escapeHTML(course.duration || "Self-paced");
-    const instructor = LMS.escapeHTML(course.instructor?.name || "LMS Instructor");
+
+    const title =
+        LMS.escapeHTML(
+            course.title ||
+            "Untitled Course"
+        );
+
+    const description =
+        LMS.escapeHTML(
+            course.description ||
+            "No course description available."
+        );
+
+    const category =
+        LMS.escapeHTML(
+            course.category ||
+            "General"
+        );
+
+    const difficulty =
+        LMS.escapeHTML(
+            course.difficulty ||
+            "Beginner"
+        );
+
+    const duration =
+        LMS.escapeHTML(
+            course.duration ||
+            "Self-paced"
+        );
+
+    const instructor =
+        LMS.escapeHTML(
+            course.instructor?.name ||
+            "LMS Instructor"
+        );
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     if (courseDetailsContainer) {
+
         courseDetailsContainer.innerHTML = `
+
             <span class="section-eyebrow">
+
                 <i class="fa-solid fa-book-open"></i>
-                ${category}
+
+                Course Overview
+
             </span>
-            <h1>${title}</h1>
-            <p class="detail-hero-description">${description}</p>
+
+
+            <h1>
+                ${title}
+            </h1>
+
+
+            <p class="detail-hero-description">
+                ${description}
+            </p>
+
+
             <div class="detail-meta">
-                <span><i class="fa-solid fa-signal"></i>${difficulty}</span>
-                <span><i class="fa-regular fa-clock"></i>${duration}</span>
-                <span><i class="fa-solid fa-user-tie"></i>${instructor}</span>
+
+                <span>
+
+                    <i class="fa-solid fa-signal"></i>
+
+                    ${difficulty}
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    ${duration}
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-solid fa-user-tie"></i>
+
+                    ${instructor}
+
+                </span>
+
             </div>
-            <div class="detail-actions">
-                <button type="button" id="enrollCourseButton" class="btn btn-primary">
-                    <i class="fa-solid fa-user-plus"></i>
-                    Enroll Now
-                </button>
-                <a href="courses.html" class="btn btn-outline">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    Back to Courses
-                </a>
-            </div>
-            <div id="courseEnrollmentMessage"></div>
+
         `;
     }
 
-    const titleElement = document.getElementById("courseTitle");
-    const descriptionElement = document.getElementById("courseDescription");
-    if (titleElement) titleElement.textContent = course.title || "Course";
-    if (descriptionElement) descriptionElement.textContent = course.description || "No course description available.";
+
+    /* =====================================================
+       COURSE OVERVIEW PANEL
+    ===================================================== */
+
+    const titleElement =
+        document.getElementById(
+            "courseTitle"
+        );
+
+    const descriptionElement =
+        document.getElementById(
+            "courseDescription"
+        );
+
+
+    if (titleElement) {
+
+        titleElement.textContent =
+            course.title ||
+            "Course";
+    }
+
+
+    if (descriptionElement) {
+
+        descriptionElement.textContent =
+            course.description ||
+            "No course description available.";
+    }
+
+
+    /* =====================================================
+       ENROLLMENT CARD
+    ===================================================== */
+
+    renderEnrollmentCard(
+        course,
+        category,
+        difficulty,
+        duration
+    );
+}
+
+/* =========================================================
+   RENDER ENROLLMENT CARD
+========================================================= */
+
+function renderEnrollmentCard(
+    course,
+    category,
+    difficulty,
+    duration
+) {
+
+    const enrollCard =
+        document.getElementById(
+            "enrollCard"
+        );
+
+
+    if (!enrollCard) {
+        return;
+    }
+
+
+    enrollCard.innerHTML = `
+
+        <div class="detail-card-icon">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+        </div>
+
+
+        <div class="enrollment-card-content">
+
+            <span class="section-eyebrow">
+                Start Learning
+            </span>
+
+
+            <h3>
+                ${LMS.escapeHTML(
+                    course.title ||
+                    "This Course"
+                )}
+            </h3>
+
+
+            <p class="mt-10">
+                Enroll in this course and start
+                your learning journey.
+            </p>
+
+
+            <div class="enrollment-details">
+
+                <div>
+
+                    <i class="fa-solid fa-signal"></i>
+
+                    <span>
+                        ${category}
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    <span>
+                        ${duration}
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    <span>
+                        Course Modules
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="enrollCourseButton"
+                class="btn btn-primary btn-block"
+            >
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Enroll Now
+
+            </button>
+
+
+            <div
+                id="courseEnrollmentMessage"
+                class="enrollment-message"
+            ></div>
+
+
+            <a
+                href="courses.html"
+                class="btn btn-outline btn-block"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Courses
+
+            </a>
+
+        </div>
+
+    `;
 }
 
 /* =========================================================
@@ -381,7 +607,7 @@ function createModulePreview(
 
 /* =========================================================
    ENROLLMENT BUTTON
-   ========================================================= */
+========================================================= */
 
 async function updateEnrollmentButton() {
 
@@ -396,38 +622,94 @@ async function updateEnrollmentButton() {
     }
 
 
+    /* =====================================================
+       NOT LOGGED IN
+    ===================================================== */
+
     if (!LMS.isAuthenticated()) {
+
         button.innerHTML = `
             <i class="fa-solid fa-right-to-bracket"></i>
             Login to Enroll
         `;
 
+
+        button.disabled = false;
+
+
         button.onclick = () => {
+
             window.location.href =
                 `login.html?redirect=course-details.html?id=${encodeURIComponent(courseId)}`;
+
         };
+
 
         return;
     }
 
+
+    /* =====================================================
+       GET CURRENT USER
+    ===================================================== */
 
     const user =
         LMS.getCurrentUser();
 
 
-    if (!user || user.role !== "student") {
+    if (!user) {
+
         button.innerHTML = `
-            <i class="fa-solid fa-circle-info"></i>
-            Student Enrollment
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Login to Enroll
         `;
 
-        button.disabled = true;
+
+        button.onclick = () => {
+
+            window.location.href =
+                `login.html?redirect=course-details.html?id=${encodeURIComponent(courseId)}`;
+
+        };
+
 
         return;
     }
 
 
+    /* =====================================================
+       ADMIN
+    ===================================================== */
+
+    if (user.role === "admin") {
+
+        button.innerHTML = `
+            <i class="fa-solid fa-shield-halved"></i>
+            Admin View
+        `;
+
+
+        button.disabled = false;
+
+
+        button.onclick = () => {
+
+            window.location.href =
+                "admin-dashboard.html";
+
+        };
+
+
+        return;
+    }
+
+
+    /* =====================================================
+       CHECK STUDENT ENROLLMENT
+    ===================================================== */
+
     try {
+
         const result =
             await LMS.api(
                 "/enrollments/my"
@@ -436,20 +718,30 @@ async function updateEnrollmentButton() {
 
         if (
             result.ok &&
-            Array.isArray(result.data?.enrollments)
+            Array.isArray(
+                result.data?.enrollments
+            )
         ) {
 
             const enrolled =
                 result.data.enrollments.some(
-                    enrollment =>
-                        String(
+                    enrollment => {
+
+                        const enrolledCourseId =
                             enrollment.courseId?._id ||
-                            enrollment.courseId
-                        ) === String(courseId)
+                            enrollment.courseId;
+
+
+                        return String(
+                            enrolledCourseId
+                        ) === String(courseId);
+
+                    }
                 );
 
 
             if (enrolled) {
+
                 setEnrolledButton(
                     button
                 );
@@ -458,12 +750,22 @@ async function updateEnrollmentButton() {
             }
         }
 
+
     } catch (error) {
+
         console.error(
             "Enrollment status check failed:",
             error
         );
+
     }
+
+
+    /* =====================================================
+       NOT ENROLLED
+    ===================================================== */
+
+    button.disabled = false;
 
 
     button.innerHTML = `
@@ -471,12 +773,10 @@ async function updateEnrollmentButton() {
         Enroll Now
     `;
 
-    button.disabled = false;
 
     button.onclick =
         enrollInCourse;
 }
-
 
 
 /* =========================================================
@@ -604,18 +904,34 @@ function setEnrolledButton(button) {
 
     button.disabled = false;
 
+    button.classList.remove(
+        "btn-primary"
+    );
+
+    button.classList.add(
+        "btn-success"
+    );
+
+
     button.innerHTML = `
         <i class="fa-solid fa-circle-check"></i>
-        Go to My Courses
+        Already Enrolled
     `;
 
 
     button.onclick = () => {
+
         window.location.href =
             "my-courses.html";
-    };
-}
 
+    };
+
+
+    showEnrollmentMessage(
+        "You are already enrolled in this course.",
+        "success"
+    );
+}
 
 
 /* =========================================================

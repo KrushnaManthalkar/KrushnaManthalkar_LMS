@@ -112,11 +112,39 @@ if (loginForm) {
             );
 
             setTimeout(() => {
-                const redirect = new URLSearchParams(window.location.search).get("redirect");
 
-                window.location.href =
-                    redirect ? decodeURIComponent(redirect) : "dashboard.html";
-            }, 700);
+    const redirect =
+        new URLSearchParams(window.location.search)
+            .get("redirect");
+
+    /*
+     * Respect explicit redirect first.
+     * Otherwise send users to the correct dashboard
+     * according to their role.
+     */
+
+    if (redirect) {
+
+        window.location.href =
+            decodeURIComponent(redirect);
+
+        return;
+    }
+
+
+    if (user.role === "admin") {
+
+        window.location.href =
+            "admin-dashboard.html";
+
+        return;
+    }
+
+
+    window.location.href =
+        "dashboard.html";
+
+}, 700);
 
         } catch (error) {
             console.error(

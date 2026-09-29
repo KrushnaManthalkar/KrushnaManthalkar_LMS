@@ -522,15 +522,6 @@ function createAssignmentCard(
     return `
         <article class="assignment-card">
 
-
-            <div class="assignment-card-icon">
-
-                <i class="fa-solid fa-file-lines"></i>
-
-            </div>
-
-
-
             <div class="assignment-card-content">
 
 

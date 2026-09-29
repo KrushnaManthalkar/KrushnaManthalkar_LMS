@@ -89,6 +89,9 @@ function getCurrentPage() {
 
         "dashboard.html":
             "dashboard",
+            
+        "admin-dashboard.html":
+            "admin-dashboard",    
 
         "my-courses.html":
             "my-courses",
@@ -549,23 +552,35 @@ function updateAuthenticationUI() {
 
 
     /*
-     * Logged in
-     */
+ * Logged in
+ */
 
-    loginLinks.forEach(
-        link => {
+const dashboardUrl =
+    user && user.role === "admin"
+        ? "admin-dashboard.html"
+        : "dashboard.html";
 
-            link.textContent =
-                "Dashboard";
 
-            link.href =
-                "dashboard.html";
+const dashboardLabel =
+    user && user.role === "admin"
+        ? "Admin Dashboard"
+        : "Dashboard";
 
-            link.classList.remove("lms-hidden");
-            link.classList.add("lms-visible");
 
-        }
-    );
+loginLinks.forEach(
+    link => {
+
+        link.textContent =
+            dashboardLabel;
+
+        link.href =
+            dashboardUrl;
+
+        link.classList.remove("lms-hidden");
+        link.classList.add("lms-visible");
+
+    }
+);
 
 
     registerLinks.forEach(

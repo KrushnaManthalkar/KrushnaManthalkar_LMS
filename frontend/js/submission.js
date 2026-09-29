@@ -722,13 +722,6 @@ function createSubmissionCard(
         <article class="assignment-card">
 
 
-            <div class="assignment-card-icon">
-
-                <i class="fa-solid fa-file-circle-check"></i>
-
-            </div>
-
-
 
             <div class="assignment-card-content">
 

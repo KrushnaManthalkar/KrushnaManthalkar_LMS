@@ -65,6 +65,141 @@ async function loadCourses() {
     }
 }
 
+/* =========================================================
+   COURSES PAGE CTA
+========================================================= */
+
+function renderCoursesCTA() {
+
+    const ctaActions =
+        document.getElementById(
+            "coursesCtaActions"
+        );
+
+
+    if (!ctaActions) {
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       Guest user
+    --------------------------------------------- */
+
+    if (!LMS.isAuthenticated()) {
+
+        ctaActions.innerHTML = `
+
+            <a
+                href="register.html"
+                class="btn btn-light btn-lg"
+            >
+
+                Create Account
+
+                <i class="fa-solid fa-user-plus"></i>
+
+            </a>
+
+
+            <a
+                href="login.html"
+                class="btn btn-outline-light btn-lg"
+            >
+
+                Sign In
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        `;
+
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       Logged-in user
+    --------------------------------------------- */
+
+    const user =
+        LMS.getCurrentUser();
+
+
+    if (!user) {
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       Admin
+    --------------------------------------------- */
+
+    if (user.role === "admin") {
+
+        ctaActions.innerHTML = `
+
+            <a
+                href="admin-dashboard.html"
+                class="btn btn-light btn-lg"
+            >
+
+                Admin Dashboard
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+            </a>
+
+
+            <a
+                href="courses.html"
+                class="btn btn-outline-light btn-lg"
+            >
+
+                Manage Courses
+
+                <i class="fa-solid fa-book-open"></i>
+
+            </a>
+
+        `;
+
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       Student
+    --------------------------------------------- */
+
+    ctaActions.innerHTML = `
+
+        <a
+            href="dashboard.html"
+            class="btn btn-light btn-lg"
+        >
+
+            Go to Dashboard
+
+            <i class="fa-solid fa-gauge-high"></i>
+
+        </a>
+
+
+        <a
+            href="dashboard.html"
+            class="btn btn-outline-light btn-lg"
+        >
+
+            My Learning
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+        </a>
+
+    `;
+}
 
 
 /* =========================================================
@@ -455,5 +590,11 @@ if (courseDifficulty) {
 
 document.addEventListener(
     "DOMContentLoaded",
-    loadCourses
+    () => {
+
+        renderCoursesCTA();
+
+        loadCourses();
+
+    }
 );
