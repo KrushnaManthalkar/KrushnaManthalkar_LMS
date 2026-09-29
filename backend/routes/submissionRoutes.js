@@ -4,6 +4,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 const roleMiddleware = require("../middleware/roleMiddleware");
 const Submission = require("../models/Submission");
 const Assignment = require("../models/Assignment");
+const Enrollment = require("../models/Enrollment");
 
 const router = express.Router();
 
