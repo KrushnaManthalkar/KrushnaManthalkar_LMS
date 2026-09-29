@@ -6,6 +6,15 @@ const Course = require("../models/Course");
 
 const router = express.Router();
 
+// TEST ROUTE
+router.get("/test", (req, res) => {
+  res.json({
+    message: "Course route is working"
+  });
+});
+
+
+
 // CREATE COURSE - ADMIN ONLY
 router.post(
   "/",
@@ -172,12 +181,5 @@ router.delete(
     }
   }
 );
-
-// TEST ROUTE
-router.get("/test", (req, res) => {
-  res.json({
-    message: "Course route is working"
-  });
-});
 
 module.exports = router;

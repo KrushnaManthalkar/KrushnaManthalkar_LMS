@@ -1,6 +1,9 @@
 const progressCourseCount =
     document.getElementById("progressCourseCount");
 
+const courseId =
+    new URLSearchParams(window.location.search).get("courseId");
+
 const progressAverage =
     document.getElementById("progressAverage");
 
@@ -71,10 +74,9 @@ async function loadProgress() {
 
     try {
 
-        const result =
-            await LMS.api(
-                "/enrollments/my"
-            );
+        const result = courseId
+            ? await LMS.api(`/progress/${encodeURIComponent(courseId)}`)
+            : await LMS.api("/enrollments/my");
 
 
         if (
@@ -100,10 +102,18 @@ async function loadProgress() {
         }
 
 
-        progressEnrollments =
-            Array.isArray(result.data)
-                ? result.data
-                : result.data?.enrollments || [];
+        progressEnrollments = courseId
+            ? [{
+                courseId: result.data?.course,
+                progress: result.data?.progress || 0,
+                status: result.data?.status || "In Progress",
+                completedModules: result.data?.completedModules || []
+            }]
+            : (
+                Array.isArray(result.data)
+                    ? result.data
+                    : result.data?.enrollments || []
+            );
 
 
         renderProgressStats();

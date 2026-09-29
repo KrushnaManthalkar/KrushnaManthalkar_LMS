@@ -498,6 +498,16 @@ function createModuleItem(
 
             </div>
 
+            <div class="module-actions">
+                <button
+                    type="button"
+                    class="btn btn-outline btn-sm module-complete-button"
+                    data-module-id="${LMS.escapeHTML(moduleId)}"
+                >
+                    <i class="fa-regular fa-circle-check"></i>
+                    Mark Complete
+                </button>
+            </div>
 
         </article>
     `;
@@ -505,6 +515,41 @@ function createModuleItem(
 
 
 
+
+
+async function completeModule(moduleId, button) {
+    if (!moduleCourseId || !moduleId || !button) return;
+
+    button.disabled = true;
+    button.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+
+    try {
+        const result = await LMS.api(
+            `/progress/${encodeURIComponent(moduleCourseId)}/module/${encodeURIComponent(moduleId)}/complete`,
+            { method: "POST" }
+        );
+
+        if (!result.ok) {
+            throw new Error(
+                result.data?.message ||
+                "Unable to complete module."
+            );
+        }
+
+        button.innerHTML =
+            '<i class="fa-solid fa-circle-check"></i> Completed';
+
+        button.classList.remove("btn-outline");
+        button.classList.add("btn-success");
+    } catch (error) {
+        console.error("Module completion error:", error);
+        button.disabled = false;
+        button.innerHTML =
+            '<i class="fa-regular fa-circle-check"></i> Mark Complete';
+        alert(error.message || "Unable to complete module.");
+    }
+}
 /* =========================================================
    UPDATE MODULE COUNT
    ========================================================= */
@@ -632,6 +677,12 @@ function renderModulesError(message) {
 /* =========================================================
    INITIALIZE
    ========================================================= */
+
+document.addEventListener("click", event => {
+    const button = event.target.closest(".module-complete-button");
+    if (!button) return;
+    completeModule(button.dataset.moduleId, button);
+});
 
 document.addEventListener(
     "DOMContentLoaded",

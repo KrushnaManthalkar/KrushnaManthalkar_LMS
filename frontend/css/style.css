@@ -3208,3 +3208,437 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* =========================================================
+   FINAL UI NORMALIZATION
+   Applied after auditing every current frontend page.
+========================================================= */
+
+html,
+body {
+    max-width: 100%;
+}
+
+main {
+    min-width: 0;
+}
+
+.page-hero {
+    position: relative;
+}
+
+.page-hero-content,
+.detail-hero-content {
+    min-width: 0;
+}
+
+.page-hero-content > p,
+.detail-hero-description {
+    color: var(--text-secondary);
+}
+
+.section-eyebrow {
+    line-height: 1.4;
+}
+
+.course-grid,
+.assignment-grid,
+.module-list,
+.content-grid,
+.detail-grid,
+.grid-2,
+.grid-3,
+.dashboard-grid,
+.stat-grid,
+.stat-grid-3,
+.stats-grid {
+    min-width: 0;
+}
+
+.course-card,
+.assignment-card,
+.module-item,
+.detail-card,
+.panel,
+.card,
+.auth-card,
+.profile-header,
+.cta-card {
+    min-width: 0;
+}
+
+.course-card-media {
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 92, 255, 0.18),
+            rgba(96, 165, 250, 0.06)
+        );
+}
+
+.course-card-image {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.course-card-placeholder {
+    height: 210px;
+    display: grid;
+    place-items: center;
+    color: var(--primary-light);
+    font-size: 3rem;
+}
+
+.course-card-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+}
+
+.course-card-body {
+    padding: 22px;
+}
+
+.course-card-body > h3 {
+    margin-bottom: 8px;
+}
+
+.course-card-body > p {
+    min-height: 52px;
+    margin: 0 0 18px;
+    color: var(--text-secondary);
+}
+
+.course-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-bottom: 14px;
+}
+
+.course-card-meta span,
+.course-instructor {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.course-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.course-instructor {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.detail-hero {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    gap: 32px;
+    align-items: center;
+    padding: 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(124, 92, 255, 0.15),
+            transparent 34%
+        ),
+        var(--surface);
+}
+
+.detail-hero-media {
+    min-height: 280px;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    background: var(--surface-light);
+}
+
+.detail-course-image {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+}
+
+.detail-course-placeholder {
+    min-height: 280px;
+    display: grid;
+    place-items: center;
+    color: var(--primary-light);
+    font-size: 4rem;
+}
+
+.detail-hero-content h1 {
+    margin-top: 12px;
+}
+
+.detail-hero-content > p {
+    max-width: 760px;
+    margin-top: 14px;
+}
+
+.detail-meta,
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 18px;
+    margin-top: 22px;
+}
+
+.detail-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.detail-actions {
+    margin-top: 25px;
+}
+
+.detail-grid {
+    margin-top: 24px;
+}
+
+.courseModulesSection,
+#courseModulesSection {
+    margin-top: 24px;
+}
+
+#courseModulesContainer {
+    padding: 24px;
+}
+
+#courseModulesContainer .module-list {
+    margin: 0;
+}
+
+.profile-detail {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    color: var(--text-secondary);
+    background: var(--surface-light);
+}
+
+.profile-identity {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+}
+
+.profile-identity > div:last-child {
+    min-width: 0;
+}
+
+.profile-role {
+    margin-left: auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.detail-card-icon {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: var(--primary-light);
+    background: rgba(124, 92, 255, 0.12);
+}
+
+.detail-card {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.form-control,
+.form-select,
+.form-textarea {
+    appearance: none;
+}
+
+.form-select {
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+        linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) 20px,
+        calc(100% - 13px) 20px;
+    background-size:
+        5px 5px,
+        5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 40px;
+}
+
+.form-select::-ms-expand {
+    display: none;
+}
+
+.empty-state .btn,
+.loading-state .btn {
+    margin-top: 16px;
+}
+
+#courseMessage,
+#loginMessage,
+#registerMessage,
+#courseEnrollmentMessage,
+#submissionMessage {
+    min-height: 0;
+}
+
+@media (max-width: 1000px) {
+    .detail-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-hero-media {
+        min-height: 220px;
+    }
+
+    .detail-course-image,
+    .detail-course-placeholder {
+        min-height: 220px;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        padding-top: 68px;
+    }
+
+    .detail-hero {
+        padding: 22px;
+    }
+
+    .detail-hero-content h1 {
+        font-size: 2.15rem;
+    }
+
+    .course-card-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .course-card-footer .btn {
+        width: 100%;
+    }
+
+    .assignment-card {
+        padding: 18px;
+    }
+
+    .assignment-card-status {
+        width: 100%;
+    }
+
+    .assignment-card-status .btn {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-identity {
+        width: 100%;
+    }
+
+    .profile-role {
+        margin-left: 0;
+    }
+
+    .detail-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .detail-actions .btn {
+        width: 100%;
+    }
+
+    #courseModulesContainer {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: calc(100% - 20px);
+    }
+
+    body {
+        padding-top: 64px;
+    }
+
+    .detail-hero {
+        padding: 17px;
+        border-radius: 18px;
+    }
+
+    .detail-hero-content h1 {
+        font-size: 1.85rem;
+    }
+
+    .course-card-media,
+    .course-card-image,
+    .course-card-placeholder {
+        min-height: 175px;
+        height: 175px;
+    }
+
+    .course-card-body {
+        padding: 18px;
+    }
+
+    .profile-header {
+        padding: 18px;
+    }
+
+    .profile-identity {
+        align-items: flex-start;
+    }
+
+    .avatar {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+        font-size: 1.1rem;
+    }
+
+    .cta-card {
+        padding: 28px 18px;
+    }
+}

@@ -7,6 +7,15 @@ const Course = require("../models/Course");
 
 const router = express.Router();
 
+// TEST ROUTE
+router.get("/test", (req, res) => {
+  res.json({
+    message: "Enrollment route is working"
+  });
+});
+
+
+
 // ENROLL IN COURSE - STUDENT ONLY
 router.post(
   "/",
@@ -122,12 +131,5 @@ router.get(
     }
   }
 );
-
-// TEST ROUTE
-router.get("/test", (req, res) => {
-  res.json({
-    message: "Enrollment route is working"
-  });
-});
 
 module.exports = router;
