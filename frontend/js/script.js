@@ -527,8 +527,8 @@ function updateAuthenticationUI() {
         loginLinks.forEach(
             link => {
 
-                link.style.display =
-                    "inline-flex";
+                link.classList.remove("lms-hidden");
+                link.classList.add("lms-visible");
 
             }
         );
@@ -537,8 +537,8 @@ function updateAuthenticationUI() {
         registerLinks.forEach(
             link => {
 
-                link.style.display =
-                    "inline-flex";
+                link.classList.remove("lms-hidden");
+                link.classList.add("lms-visible");
 
             }
         );
@@ -561,8 +561,8 @@ function updateAuthenticationUI() {
             link.href =
                 "dashboard.html";
 
-            link.style.display =
-                "inline-flex";
+            link.classList.remove("lms-hidden");
+            link.classList.add("lms-visible");
 
         }
     );
@@ -577,8 +577,8 @@ function updateAuthenticationUI() {
             link.href =
                 "#";
 
-            link.style.display =
-                "inline-flex";
+            link.classList.remove("lms-hidden");
+            link.classList.add("lms-visible");
 
 
             /*
