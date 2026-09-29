@@ -1,4 +1,6 @@
 const progressCourseCount =
+
+const courseId = new URLSearchParams(window.location.search).get("courseId");
     document.getElementById("progressCourseCount");
 
 const progressAverage =
