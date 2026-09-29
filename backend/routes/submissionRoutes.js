@@ -8,6 +8,15 @@ const Enrollment = require("../models/Enrollment");
 
 const router = express.Router();
 
+// TEST ROUTE
+router.get("/test", (req, res) => {
+  res.json({
+    message: "Submission route is working"
+  });
+});
+
+
+
 // SUBMIT ASSIGNMENT - STUDENT ONLY
 router.post(
   "/",
@@ -169,12 +178,5 @@ router.put(
     }
   }
 );
-
-// TEST ROUTE
-router.get("/test", (req, res) => {
-  res.json({
-    message: "Submission route is working"
-  });
-});
 
 module.exports = router;
