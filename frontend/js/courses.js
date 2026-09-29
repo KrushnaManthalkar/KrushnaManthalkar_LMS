@@ -1,5 +1,5 @@
 const coursesContainer =
-    document.getElementById("coursesContainer");
+    document.getElementById("courseGrid");
 
 const courseSearch =
     document.getElementById("courseSearch");
