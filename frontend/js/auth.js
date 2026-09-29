@@ -112,8 +112,10 @@ if (loginForm) {
             );
 
             setTimeout(() => {
+                const redirect = new URLSearchParams(window.location.search).get("redirect");
+
                 window.location.href =
-                    "dashboard.html";
+                    redirect ? decodeURIComponent(redirect) : "dashboard.html";
             }, 700);
 
         } catch (error) {
