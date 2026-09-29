@@ -44,6 +44,27 @@ router.post(
         });
       }
 
+      const enrollment = await Enrollment.findOne({
+        studentId: req.user.id,
+        courseId: assignment.courseId
+      });
+
+      if (!enrollment) {
+        return res.status(403).json({
+          message: "You are not enrolled in this course."
+        });
+      }
+
+      if (
+        assignment.deadline &&
+        new Date() > new Date(assignment.deadline)
+      ) {
+        return res.status(400).json({
+          message: "The assignment deadline has passed."
+        });
+      }
+
+
       // Check if student already submitted
       const existingSubmission = await Submission.findOne({
         assignmentId,
@@ -150,7 +171,26 @@ router.put(
       }
 
       if (marks !== undefined) {
-        submission.marks = marks;
+        const assignment = await Assignment.findById(
+          submission.assignmentId
+        );
+
+        const numericMarks = Number(marks);
+        const maximumMarks = Number(
+          assignment?.maximumMarks || 0
+        );
+
+        if (
+          !Number.isFinite(numericMarks) ||
+          numericMarks < 0 ||
+          numericMarks > maximumMarks
+        ) {
+          return res.status(400).json({
+            message: `Marks must be between 0 and ${maximumMarks}.`
+          });
+        }
+
+        submission.marks = numericMarks;
       }
 
       if (feedback !== undefined) {
