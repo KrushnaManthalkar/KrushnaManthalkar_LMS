@@ -1,5 +1,5 @@
 const courseDetailsContainer =
-    document.getElementById("courseDetailsContainer");
+    document.getElementById("courseDetailsHero");
 
 const courseId =
     new URLSearchParams(window.location.search).get("id");
@@ -99,307 +99,45 @@ async function loadCourseDetails() {
    ========================================================= */
 
 function renderCourseDetails(course) {
+    const title = LMS.escapeHTML(course.title || "Untitled Course");
+    const description = LMS.escapeHTML(course.description || "No course description available.");
+    const category = LMS.escapeHTML(course.category || "General");
+    const difficulty = LMS.escapeHTML(course.difficulty || "Beginner");
+    const duration = LMS.escapeHTML(course.duration || "Self-paced");
+    const instructor = LMS.escapeHTML(course.instructor?.name || "LMS Instructor");
 
-    const title =
-        LMS.escapeHTML(
-            course.title ||
-            "Untitled Course"
-        );
-
-
-    const description =
-        LMS.escapeHTML(
-            course.description ||
-            "No course description available."
-        );
-
-
-    const category =
-        LMS.escapeHTML(
-            course.category ||
-            "General"
-        );
-
-
-    const difficulty =
-        LMS.escapeHTML(
-            course.difficulty ||
-            "Beginner"
-        );
-
-
-    const duration =
-        LMS.escapeHTML(
-            course.duration ||
-            "Self-paced"
-        );
-
-
-    const instructor =
-        LMS.escapeHTML(
-            course.instructor?.name ||
-            "LMS Instructor"
-        );
-
-
-    const image =
-        course.image
-            ? LMS.escapeHTML(course.image)
-            : "";
-
-
-    const mediaContent = image
-        ? `
-            <img
-                src="${image}"
-                alt="${title}"
-                class="detail-course-image"
-            >
-        `
-        : `
-            <div class="detail-course-placeholder">
-
-                <i class="fa-solid fa-graduation-cap"></i>
-
+    if (courseDetailsContainer) {
+        courseDetailsContainer.innerHTML = `
+            <span class="section-eyebrow">
+                <i class="fa-solid fa-book-open"></i>
+                ${category}
+            </span>
+            <h1>${title}</h1>
+            <p class="detail-hero-description">${description}</p>
+            <div class="detail-meta">
+                <span><i class="fa-solid fa-signal"></i>${difficulty}</span>
+                <span><i class="fa-regular fa-clock"></i>${duration}</span>
+                <span><i class="fa-solid fa-user-tie"></i>${instructor}</span>
             </div>
+            <div class="detail-actions">
+                <button type="button" id="enrollCourseButton" class="btn btn-primary">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Enroll Now
+                </button>
+                <a href="courses.html" class="btn btn-outline">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Courses
+                </a>
+            </div>
+            <div id="courseEnrollmentMessage"></div>
         `;
-
-
-    courseDetailsContainer.innerHTML = `
-        <div class="detail-hero">
-
-
-            <div class="detail-hero-media">
-
-                ${mediaContent}
-
-            </div>
-
-
-
-            <div class="detail-hero-content">
-
-
-                <span class="badge badge-primary">
-                    ${category}
-                </span>
-
-
-                <h1>
-                    ${title}
-                </h1>
-
-
-                <p>
-                    ${description}
-                </p>
-
-
-
-                <div class="detail-meta">
-
-
-                    <span>
-
-                        <i class="fa-solid fa-signal"></i>
-
-                        ${difficulty}
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-regular fa-clock"></i>
-
-                        ${duration}
-
-                    </span>
-
-
-                    <span>
-
-                        <i class="fa-solid fa-user-tie"></i>
-
-                        ${instructor}
-
-                    </span>
-
-
-                </div>
-
-
-
-                <div class="detail-actions">
-
-                    <button
-                        type="button"
-                        id="enrollCourseButton"
-                        class="btn btn-primary"
-                    >
-
-                        <i class="fa-solid fa-user-plus"></i>
-
-                        Enroll Now
-
-                    </button>
-
-
-                    <a
-                        href="courses.html"
-                        class="btn btn-outline"
-                    >
-
-                        <i class="fa-solid fa-arrow-left"></i>
-
-                        Back to Courses
-
-                    </a>
-
-                </div>
-
-
-                <div
-                    id="courseEnrollmentMessage"
-                    class="mt-20"
-                ></div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="detail-grid">
-
-
-            <div class="detail-card">
-
-                <div class="detail-card-icon">
-
-                    <i class="fa-solid fa-book-open"></i>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Structured Learning
-                    </h3>
-
-                    <p>
-                        Learn through organized course modules
-                        and learning resources.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="detail-card">
-
-                <div class="detail-card-icon">
-
-                    <i class="fa-solid fa-list-check"></i>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Practical Assignments
-                    </h3>
-
-                    <p>
-                        Complete assignments and submit your
-                        work through the LMS.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="detail-card">
-
-                <div class="detail-card-icon">
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Track Progress
-                    </h3>
-
-                    <p>
-                        Monitor your learning progress as
-                        you complete course modules.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div
-            id="courseModulesSection"
-            class="panel"
-        >
-
-            <div class="panel-header">
-
-                <div>
-
-                    <span class="section-eyebrow">
-                        Course Content
-                    </span>
-
-                    <h2>
-                        Modules
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div
-                id="courseModulesContainer"
-                class="module-list"
-            >
-
-                <div class="loading-state">
-
-                    <div class="loading-spinner"></div>
-
-                    <p>
-                        Loading modules...
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-    `;
+    }
+
+    const titleElement = document.getElementById("courseTitle");
+    const descriptionElement = document.getElementById("courseDescription");
+    if (titleElement) titleElement.textContent = course.title || "Course";
+    if (descriptionElement) descriptionElement.textContent = course.description || "No course description available.";
 }
-
-
 
 /* =========================================================
    LOAD COURSE MODULES
@@ -409,7 +147,7 @@ async function loadCourseModules(courseIdValue) {
 
     const modulesContainer =
         document.getElementById(
-            "courseModulesContainer"
+            "modulePreview"
         );
 
 
@@ -698,11 +436,11 @@ async function updateEnrollmentButton() {
 
         if (
             result.ok &&
-            Array.isArray(result.data)
+            Array.isArray(result.data?.enrollments)
         ) {
 
             const enrolled =
-                result.data.some(
+                result.data.enrollments.some(
                     enrollment =>
                         String(
                             enrollment.courseId?._id ||
