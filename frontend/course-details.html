@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View LMS course details, modules and enrollment information."
+    >
+
+    <title>LMS — Course Details</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             COURSE HERO
+             ================================================= -->
+
+        <section class="detail-hero">
+
+            <div class="container">
+
+                <div
+                    id="courseDetailsHero"
+                    class="detail-hero-content"
+                >
+
+                    <div class="loading-state">
+
+                        <i
+                            class="fa-solid fa-spinner fa-spin"
+                        ></i>
+
+                        <p>
+                            Loading course...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COURSE CONTENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="content-grid">
+
+
+                    <!-- Main content -->
+
+                    <div class="content-stack">
+
+
+                        <!-- Course overview -->
+
+                        <div class="panel">
+
+                            <span class="section-eyebrow">
+
+                                <i class="fa-solid fa-circle-info"></i>
+
+                                Course overview
+
+                            </span>
+
+
+                            <h2 id="courseTitle">
+                                Course
+                            </h2>
+
+
+                            <p
+                                id="courseDescription"
+                                class="mt-10"
+                            >
+                                Loading course description...
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- Modules -->
+
+                        <div class="panel">
+
+                            <div class="toolbar">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+
+                                        <i
+                                            class="fa-solid fa-layer-group"
+                                        ></i>
+
+                                        Learning path
+
+                                    </span>
+
+
+                                    <h3>
+                                        Course Modules
+                                    </h3>
+
+
+                                    <p class="text-muted">
+
+                                        Follow the sequence to complete
+                                        the course step by step.
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                id="modulePreview"
+                                class="module-list"
+                            >
+
+                                <div class="loading-state">
+
+                                    <i
+                                        class="fa-solid fa-spinner fa-spin"
+                                    ></i>
+
+                                    <p>
+                                        Loading modules...
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Learning experience -->
+
+                        <div class="panel">
+
+                            <span class="section-eyebrow">
+
+                                <i class="fa-solid fa-route"></i>
+
+                                Learning experience
+
+                            </span>
+
+
+                            <h3>
+                                Learn, practice and track.
+                            </h3>
+
+
+                            <p class="mt-10">
+
+                                Work through structured modules,
+                                use connected learning resources,
+                                complete assignments and monitor
+                                your progress throughout the course.
+
+                            </p>
+
+
+                            <div class="grid-2 mt-20">
+
+                                <div class="card">
+
+                                    <div class="card-body">
+
+                                        <div class="feature-icon">
+
+                                            <i
+                                                class="fa-solid fa-book-open"
+                                            ></i>
+
+                                        </div>
+
+
+                                        <h4>
+                                            Structured Modules
+                                        </h4>
+
+
+                                        <p class="mt-10">
+
+                                            Follow an organized learning
+                                            sequence designed to build
+                                            knowledge progressively.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="card">
+
+                                    <div class="card-body">
+
+                                        <div class="feature-icon">
+
+                                            <i
+                                                class="fa-solid fa-list-check"
+                                            ></i>
+
+                                        </div>
+
+
+                                        <h4>
+                                            Practical Assignments
+                                        </h4>
+
+
+                                        <p class="mt-10">
+
+                                            Apply what you learn through
+                                            assignments and receive
+                                            feedback.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- Enrollment card -->
+
+                    <aside
+                        id="enrollCard"
+                        class="detail-card"
+                    >
+
+                        <div class="loading-state">
+
+                            <i
+                                class="fa-solid fa-spinner fa-spin"
+                            ></i>
+
+                            <p>
+                                Preparing course...
+                            </p>
+
+                        </div>
+
+                    </aside>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+             ================================================= -->
+
+        <section class="section-sm">
+
+            <div class="container">
+
+                <div class="cta-card">
+
+                    <div class="cta-content">
+
+                        <span class="section-eyebrow">
+
+                            <i class="fa-solid fa-graduation-cap"></i>
+
+                            Start your journey
+
+                        </span>
+
+
+                        <h2>
+                            Turn learning into progress.
+                        </h2>
+
+
+                        <p>
+
+                            Enroll in the course, work through the
+                            modules and keep your learning journey
+                            moving forward.
+
+                        </p>
+
+
+                        <div class="cta-actions">
+
+                            <a
+                                href="courses.html"
+                                class="btn btn-light btn-lg"
+                            >
+
+                                Browse Courses
+
+                                <i
+                                    class="fa-solid fa-arrow-left"
+                                ></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="cta-decoration">
+
+                        <div class="cta-circle circle-one"></div>
+
+                        <div class="cta-circle circle-two"></div>
+
+                        <div class="cta-icon">
+
+                            <i
+                                class="fa-solid fa-graduation-cap"
+                            ></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Page-specific JavaScript -->
+
+    <script src="js/course-details.js"></script>
+
+
+</body>
+
+</html>

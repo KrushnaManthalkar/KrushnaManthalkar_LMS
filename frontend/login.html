@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sign in to your LMS student account."
+    >
+
+    <title>LMS — Login</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             LOGIN PAGE
+             ================================================= -->
+
+        <section class="auth-page">
+
+            <div class="container">
+
+                <div class="auth-wrapper">
+
+
+                    <div class="auth-card">
+
+
+                        <!-- Header -->
+
+                        <div class="auth-header">
+
+                            <span class="section-eyebrow">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                Welcome back
+
+                            </span>
+
+
+                            <h1>
+                                Sign in
+                            </h1>
+
+
+                            <p>
+                                Continue your learning journey.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- Message -->
+
+                        <div
+                            id="loginMessage"
+                            class="mb-20"
+                        ></div>
+
+
+
+                        <!-- Login form -->
+
+                        <form id="loginForm">
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="email"
+                                >
+                                    Email Address
+                                </label>
+
+
+                                <input
+                                    id="email"
+                                    class="form-control"
+                                    type="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="password"
+                                >
+                                    Password
+                                </label>
+
+
+                                <input
+                                    id="password"
+                                    class="form-control"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    minlength="6"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <button
+                                class="btn btn-primary"
+                                type="submit"
+                            >
+
+                                Sign In
+
+                                <i
+                                    class="fa-solid fa-arrow-right"
+                                ></i>
+
+                            </button>
+
+
+                        </form>
+
+
+
+                        <!-- Footer -->
+
+                        <div class="auth-footer">
+
+                            Don't have an account?
+
+                            <a href="register.html">
+                                Create one
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Authentication JavaScript -->
+
+    <script src="js/auth.js"></script>
+
+
+</body>
+
+</html>

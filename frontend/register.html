@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Create your LMS student account and start learning."
+    >
+
+    <title>LMS — Register</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             REGISTER PAGE
+             ================================================= -->
+
+        <section class="auth-page">
+
+            <div class="container">
+
+                <div class="auth-wrapper">
+
+
+                    <div class="auth-card">
+
+
+                        <!-- Header -->
+
+                        <div class="auth-header">
+
+                            <span class="section-eyebrow">
+
+                                <i class="fa-solid fa-user-plus"></i>
+
+                                Start learning
+
+                            </span>
+
+
+                            <h1>
+                                Create account
+                            </h1>
+
+
+                            <p>
+                                Join the LMS and start your learning journey.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- Message -->
+
+                        <div
+                            id="registerMessage"
+                            class="mb-20"
+                        ></div>
+
+
+
+                        <!-- Registration form -->
+
+                        <form id="registerForm">
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="name"
+                                >
+                                    Full Name
+                                </label>
+
+
+                                <input
+                                    id="name"
+                                    class="form-control"
+                                    type="text"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="email"
+                                >
+                                    Email Address
+                                </label>
+
+
+                                <input
+                                    id="email"
+                                    class="form-control"
+                                    type="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="password"
+                                >
+                                    Password
+                                </label>
+
+
+                                <input
+                                    id="password"
+                                    class="form-control"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Minimum 6 characters"
+                                    autocomplete="new-password"
+                                    minlength="6"
+                                    required
+                                >
+
+
+                                <div class="form-help">
+
+                                    Use at least 6 characters for
+                                    your password.
+
+                                </div>
+
+                            </div>
+
+
+
+                            <button
+                                class="btn btn-primary"
+                                type="submit"
+                            >
+
+                                Create Account
+
+                                <i
+                                    class="fa-solid fa-user-plus"
+                                ></i>
+
+                            </button>
+
+
+                        </form>
+
+
+
+                        <!-- Footer -->
+
+                        <div class="auth-footer">
+
+                            Already have an account?
+
+                            <a href="login.html">
+                                Sign in
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Authentication JavaScript -->
+
+    <script src="js/auth.js"></script>
+
+
+</body>
+
+</html>

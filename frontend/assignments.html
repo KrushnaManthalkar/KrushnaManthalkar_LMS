@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View course assignments, deadlines and submission status in the LMS."
+    >
+
+    <title>LMS — Assignments</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-file-pen"></i>
+
+                        Coursework
+
+                    </span>
+
+
+                    <h1>
+                        Assignments
+                    </h1>
+
+
+                    <p>
+                        View your course assignments, deadlines,
+                        marks and submission status.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ASSIGNMENT CONTENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <!-- Toolbar -->
+
+                <div class="toolbar">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            Your Coursework
+                        </span>
+
+                        <h2>
+                            Available Assignments
+                        </h2>
+
+                    </div>
+
+
+                    <div class="toolbar-actions">
+
+                        <a
+                            href="my-courses.html"
+                            class="btn btn-outline"
+                        >
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            My Courses
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Assignment filters -->
+
+                <div class="panel">
+
+                    <div class="toolbar">
+
+                        <div class="search-box">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                id="assignmentSearch"
+                                type="search"
+                                placeholder="Search assignments..."
+                                aria-label="Search assignments"
+                            >
+
+                        </div>
+
+
+                        <div class="toolbar-actions">
+
+                            <select
+                                id="assignmentCourseFilter"
+                                class="form-control"
+                                aria-label="Filter assignments by course"
+                            >
+
+                                <option value="all">
+                                    All Courses
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Assignment list -->
+
+                <div
+                    id="assignmentsContainer"
+                    class="content-stack"
+                >
+
+                    <div class="loading-state">
+
+                        <div class="loading-spinner"></div>
+
+                        <p>
+                            Loading assignments...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Assignments JavaScript -->
+
+    <script src="js/assignments.js"></script>
+
+
+</body>
+
+</html>

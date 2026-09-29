@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Submit assignments and review your LMS submission history."
+    >
+
+    <title>LMS — Submission</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        Assignment Submission
+
+                    </span>
+
+
+                    <h1>
+                        Submit Your Work
+                    </h1>
+
+
+                    <p>
+                        Submit your assignment, track its review status,
+                        and view marks and instructor feedback.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUBMISSION CONTENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="content-grid">
+
+
+                    <!-- Submission form -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="section-eyebrow">
+                                    New Submission
+                                </span>
+
+                                <h2>
+                                    Submit Assignment
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="submissionMessage"
+                            class="mb-20"
+                        ></div>
+
+
+                        <form id="submissionForm">
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="assignmentSelect"
+                                >
+                                    Assignment
+                                </label>
+
+
+                                <select
+                                    id="assignmentSelect"
+                                    class="form-control"
+                                    name="assignmentId"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select an assignment
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="submissionLink"
+                                >
+                                    Submission Link
+                                </label>
+
+
+                                <input
+                                    id="submissionLink"
+                                    class="form-control"
+                                    type="url"
+                                    name="submissionLink"
+                                    placeholder="https://github.com/yourusername/project"
+                                    required
+                                >
+
+
+                                <div class="form-help">
+
+                                    Add a GitHub, Google Drive,
+                                    deployed project, or other accessible
+                                    project link.
+
+                                </div>
+
+                            </div>
+
+
+
+                            <button
+                                id="submissionButton"
+                                class="btn btn-primary"
+                                type="submit"
+                            >
+
+                                <i class="fa-solid fa-paper-plane"></i>
+
+                                Submit Assignment
+
+                            </button>
+
+
+                        </form>
+
+                    </div>
+
+
+
+                    <!-- Submission information -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="section-eyebrow">
+                                    Submission Guide
+                                </span>
+
+                                <h2>
+                                    Before You Submit
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="content-stack">
+
+
+                            <div class="detail-card">
+
+                                <div class="detail-card-icon">
+
+                                    <i class="fa-solid fa-link"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h3>
+                                        Use an accessible link
+                                    </h3>
+
+                                    <p>
+                                        Make sure your project or
+                                        document can be opened by the
+                                        instructor.
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="detail-card">
+
+                                <div class="detail-card-icon">
+
+                                    <i class="fa-solid fa-clock"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h3>
+                                        Check the deadline
+                                    </h3>
+
+                                    <p>
+                                        Submit your work before the
+                                        assignment deadline.
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="detail-card">
+
+                                <div class="detail-card-icon">
+
+                                    <i class="fa-solid fa-message"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <h3>
+                                        Review feedback
+                                    </h3>
+
+                                    <p>
+                                        Once reviewed, marks and
+                                        instructor feedback will appear
+                                        in your submission history.
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- Submission history -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="section-eyebrow">
+                                Your Work
+                            </span>
+
+                            <h2>
+                                Submission History
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="submissionHistory"
+                        class="content-stack"
+                    >
+
+                        <div class="loading-state">
+
+                            <div class="loading-spinner"></div>
+
+                            <p>
+                                Loading your submissions...
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Submission JavaScript -->
+
+    <script src="js/submission.js"></script>
+
+
+</body>
+
+</html>

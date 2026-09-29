@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Track your learning progress and course completion in the LMS."
+    >
+
+    <title>LMS — Progress</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        Learning Analytics
+
+                    </span>
+
+
+                    <h1>
+                        My Progress
+                    </h1>
+
+
+                    <p>
+                        Track your course completion and see
+                        how far you have progressed in your learning journey.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROGRESS CONTENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <!-- Overall statistics -->
+
+                <div class="stat-grid-3">
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Courses
+                            </span>
+
+
+                            <strong
+                                id="progressCourseCount"
+                                class="metric-value"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-chart-pie"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Average Progress
+                            </span>
+
+
+                            <strong
+                                id="progressAverage"
+                                class="metric-value"
+                            >
+                                0%
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="metric-card">
+
+                        <div class="metric-icon">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="metric-label">
+                                Completed
+                            </span>
+
+
+                            <strong
+                                id="progressCompleted"
+                                class="metric-value"
+                            >
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- Course progress -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="section-eyebrow">
+                                Course Performance
+                            </span>
+
+                            <h2>
+                                Learning Progress
+                            </h2>
+
+                        </div>
+
+
+                        <a
+                            href="my-courses.html"
+                            class="btn btn-outline btn-sm"
+                        >
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            My Courses
+
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        id="progressCoursesContainer"
+                        class="content-stack"
+                    >
+
+                        <div class="loading-state">
+
+                            <div class="loading-spinner"></div>
+
+                            <p>
+                                Loading your progress...
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Learning tips -->
+
+                <div class="content-grid">
+
+
+                    <div class="detail-card">
+
+                        <div class="detail-card-icon">
+
+                            <i class="fa-solid fa-bullseye"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Keep a steady pace
+                            </h3>
+
+                            <p>
+                                Complete your course modules regularly
+                                to maintain consistent learning progress.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="detail-card">
+
+                        <div class="detail-card-icon">
+
+                            <i class="fa-solid fa-list-check"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Complete your assignments
+                            </h3>
+
+                            <p>
+                                Stay on top of your coursework and
+                                submit assignments before their deadlines.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Progress JavaScript -->
+
+    <script src="js/progress.js"></script>
+
+
+</body>
+
+</html>
