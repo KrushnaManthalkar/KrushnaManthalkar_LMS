@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage LMS courses."
+    >
+
+    <title>LMS — Manage Courses</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HERO
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                        Administration
+
+                    </span>
+
+
+                    <h1>
+                        Manage Courses
+                    </h1>
+
+
+                    <p>
+                        Create, edit and manage courses
+                        available in the LMS.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COURSE MANAGEMENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="dashboard-layout">
+
+
+                    <!-- =================================================
+                         SIDEBAR
+                         ================================================= -->
+
+                    <aside class="dashboard-sidebar">
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Management
+                                    </span>
+
+                                    <h3>
+                                        Quick Access
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="dashboard-nav">
+
+
+                                <a
+                                    href="admin-dashboard.html"
+                                    class="dashboard-nav-link"
+                                >
+
+                                    <i class="fa-solid fa-gauge-high"></i>
+
+                                    <span>
+                                        Dashboard
+                                    </span>
+
+                                </a>
+
+
+                                <a
+                                    href="admin-courses.html"
+                                    class="dashboard-nav-link active"
+                                >
+
+                                    <i class="fa-solid fa-book-open"></i>
+
+                                    <span>
+                                        Courses
+                                    </span>
+
+                                </a>
+
+
+                                <a
+                                    href="assignments.html"
+                                    class="dashboard-nav-link"
+                                >
+
+                                    <i class="fa-solid fa-file-lines"></i>
+
+                                    <span>
+                                        Assignments
+                                    </span>
+
+                                </a>
+
+
+                                <a
+                                    href="index.html"
+                                    class="dashboard-nav-link"
+                                >
+
+                                    <i class="fa-solid fa-house"></i>
+
+                                    <span>
+                                        Website
+                                    </span>
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+
+
+                    <!-- =================================================
+                         MAIN CONTENT
+                         ================================================= -->
+
+                    <div class="dashboard-main">
+
+
+                        <!-- =================================================
+                             COURSE FORM
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Course Management
+                                    </span>
+
+                                    <h2 id="courseFormTitle">
+                                        Create New Course
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+
+                                <div id="courseMessage"></div>
+
+
+                                <form
+                                    id="courseForm"
+                                    novalidate
+                                >
+
+
+                                    <div class="form-grid">
+
+
+                                        <!-- Title -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="courseTitle"
+                                                class="form-label"
+                                            >
+                                                Course Title
+                                            </label>
+
+                                            <input
+                                                id="courseTitle"
+                                                name="title"
+                                                class="form-control"
+                                                type="text"
+                                                placeholder="e.g. Full Stack Development"
+                                                required
+                                            >
+
+                                        </div>
+
+
+
+                                        <!-- Category -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="courseCategory"
+                                                class="form-label"
+                                            >
+                                                Category
+                                            </label>
+
+                                            <input
+                                                id="courseCategory"
+                                                name="category"
+                                                class="form-control"
+                                                type="text"
+                                                placeholder="e.g. Web Development"
+                                                required
+                                            >
+
+                                        </div>
+
+
+
+                                        <!-- Duration -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="courseDuration"
+                                                class="form-label"
+                                            >
+                                                Duration
+                                            </label>
+
+                                            <input
+                                                id="courseDuration"
+                                                name="duration"
+                                                class="form-control"
+                                                type="text"
+                                                placeholder="e.g. 8 Weeks"
+                                                required
+                                            >
+
+                                        </div>
+
+
+
+                                        <!-- Difficulty -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="courseDifficulty"
+                                                class="form-label"
+                                            >
+                                                Difficulty
+                                            </label>
+
+                                            <select
+                                                id="courseDifficulty"
+                                                name="difficulty"
+                                                class="form-select"
+                                            >
+
+                                                <option value="Beginner">
+                                                    Beginner
+                                                </option>
+
+                                                <option value="Intermediate">
+                                                    Intermediate
+                                                </option>
+
+                                                <option value="Advanced">
+                                                    Advanced
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <!-- Description -->
+
+                                    <div class="form-group">
+
+                                        <label
+                                            for="courseDescription"
+                                            class="form-label"
+                                        >
+                                            Description
+                                        </label>
+
+                                        <textarea
+                                            id="courseDescription"
+                                            name="description"
+                                            class="form-textarea"
+                                            placeholder="Describe what students will learn in this course..."
+                                            required
+                                        ></textarea>
+
+                                    </div>
+
+
+
+                                    <!-- Image -->
+
+                                    <div class="form-group">
+
+                                        <label
+                                            for="courseImage"
+                                            class="form-label"
+                                        >
+                                            Course Image URL
+                                        </label>
+
+                                        <input
+                                            id="courseImage"
+                                            name="image"
+                                            class="form-control"
+                                            type="url"
+                                            placeholder="https://example.com/course-image.jpg"
+                                        >
+
+                                    </div>
+
+
+
+                                    <!-- Buttons -->
+
+                                    <div class="toolbar-actions">
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary"
+                                            id="courseSubmitButton"
+                                        >
+
+                                            <i class="fa-solid fa-plus"></i>
+
+                                            Create Course
+
+                                        </button>
+
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-outline"
+                                            id="cancelEditButton"
+                                            hidden
+                                        >
+
+                                            <i class="fa-solid fa-xmark"></i>
+
+                                            Cancel Edit
+
+                                        </button>
+
+                                    </div>
+
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             COURSE LIST
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Courses
+                                    </span>
+
+                                    <h2>
+                                        Existing Courses
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    id="courseCount"
+                                    class="badge badge-primary"
+                                >
+                                    0 Courses
+                                </span>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+
+                                <div id="courseList">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <p>
+                                            Loading courses...
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Admin Course JavaScript -->
+
+    <script src="js/admin-courses.js"></script>
+
+
+</body>
+
+</html>

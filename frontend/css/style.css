@@ -5330,3 +5330,94 @@ main {
     }
 
 }
+
+/* =========================================================
+   ADMIN DASHBOARD — STUDENT CARD
+========================================================= */
+
+#studentOverview .assignment-card {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 18px;
+
+    padding: 22px 24px;
+}
+
+
+/* Student icon */
+
+#studentOverview .assignment-card-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    color: var(--primary-light);
+    background: rgba(124, 92, 255, 0.12);
+}
+
+
+/* Student information */
+
+#studentOverview .assignment-card-content {
+    min-width: 0;
+}
+
+#studentOverview .assignment-card-content h3 {
+    margin: 0;
+
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+#studentOverview .assignment-card-content p {
+    margin-top: 4px;
+
+    font-size: 0.88rem;
+}
+
+#studentOverview .assignment-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 7px;
+
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+
+/* Student badge */
+
+#studentOverview .assignment-card-status {
+    width: auto;
+    flex-shrink: 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    #studentOverview .assignment-card {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    #studentOverview .assignment-card-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    #studentOverview .assignment-card-status {
+        grid-column: 2;
+    }
+
+}

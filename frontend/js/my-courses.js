@@ -8,24 +8,40 @@ let myEnrollments = [];
 /* =========================================================
    AUTH CHECK
    ========================================================= */
-
 function checkMyCoursesAccess() {
+
     if (!LMS.isAuthenticated()) {
+
         window.location.href =
             "login.html";
 
         return false;
     }
+
 
     const user =
         LMS.getCurrentUser();
 
+
     if (!user) {
+
         window.location.href =
             "login.html";
 
         return false;
     }
+
+
+    /* Admins should use Admin Dashboard */
+
+    if (user.role === "admin") {
+
+        window.location.href =
+            "admin-dashboard.html";
+
+        return false;
+    }
+
 
     return true;
 }
