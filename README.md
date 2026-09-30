@@ -50,3 +50,29 @@ Implemented complete admin module management.
 
 #### Status
 ✅ Tested and working
+
+### Phase 3 — Admin Assignment Management ✅
+
+Implemented complete admin assignment management.
+
+#### Features
+- Select course
+- View course assignments
+- Create new assignments
+- Edit existing assignments
+- Delete assignments
+- Assignment deadlines
+- Maximum marks
+- Assignment descriptions
+- Admin-only access protection
+- Assignment data persisted through backend API
+- Admin Dashboard assignment navigation
+
+#### Admin Assignment APIs
+- `POST /api/assignments`
+- `GET /api/assignments/course/:courseId`
+- `PUT /api/assignments/:id`
+- `DELETE /api/assignments/:id`
+
+#### Status
+✅ Tested and working

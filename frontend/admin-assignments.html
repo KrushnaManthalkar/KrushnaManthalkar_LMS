@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage LMS course assignments."
+    >
+
+    <title>LMS — Manage Assignments</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        Admin Management
+
+                    </span>
+
+
+                    <h1>
+                        Manage Assignments
+                    </h1>
+
+
+                    <p>
+                        Create, edit and manage assignments
+                        for your courses.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="dashboard-layout">
+
+
+                    <!-- =================================================
+                         SIDEBAR
+                         ================================================= -->
+
+                    <aside class="dashboard-sidebar">
+
+                        <nav class="dashboard-nav">
+
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-gauge-high"></i>
+
+                                Dashboard
+
+                            </a>
+
+
+                            <a
+                                href="admin-courses.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-book-open"></i>
+
+                                Manage Courses
+
+                            </a>
+
+
+                            <a
+                                href="admin-modules.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-layer-group"></i>
+
+                                Manage Modules
+
+                            </a>
+
+
+                            <a
+                                href="admin-assignments.html"
+                                class="dashboard-nav-item active"
+                            >
+
+                                <i class="fa-solid fa-list-check"></i>
+
+                                Manage Assignments
+
+                            </a>
+
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-users"></i>
+
+                                Manage Students
+
+                            </a>
+
+
+                        </nav>
+
+                    </aside>
+
+
+
+                    <!-- =================================================
+                         MAIN CONTENT
+                         ================================================= -->
+
+                    <div class="dashboard-content">
+
+
+                        <!-- =================================================
+                             COURSE SELECTOR
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Course Selection
+                                    </span>
+
+                                    <h2>
+                                        Select Course
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <label
+                                    for="courseSelect"
+                                    class="form-label"
+                                >
+                                    Course
+                                </label>
+
+
+                                <select
+                                    id="courseSelect"
+                                    class="form-control form-select"
+                                >
+
+                                    <option value="">
+                                        Select a course
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             ASSIGNMENT FORM
+                             ================================================= -->
+
+                        <div
+                            id="assignmentFormPanel"
+                            class="panel"
+                            hidden
+                        >
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Assignment
+                                    </span>
+
+                                    <h2 id="assignmentFormTitle">
+                                        Create New Assignment
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+
+                                <div
+                                    id="assignmentMessage"
+                                    aria-live="polite"
+                                ></div>
+
+
+                                <form id="assignmentForm">
+
+
+                                    <div class="form-grid">
+
+
+                                        <!-- Title -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="assignmentTitle"
+                                                class="form-label"
+                                            >
+                                                Assignment Title
+                                            </label>
+
+
+                                            <input
+                                                type="text"
+                                                id="assignmentTitle"
+                                                class="form-control"
+                                                placeholder="Enter assignment title"
+                                                required
+                                            >
+
+                                        </div>
+
+
+
+                                        <!-- Maximum Marks -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="maximumMarks"
+                                                class="form-label"
+                                            >
+                                                Maximum Marks
+                                            </label>
+
+
+                                            <input
+                                                type="number"
+                                                id="maximumMarks"
+                                                class="form-control"
+                                                min="1"
+                                                step="1"
+                                                placeholder="100"
+                                                required
+                                            >
+
+                                        </div>
+
+
+
+                                        <!-- Deadline -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="assignmentDeadline"
+                                                class="form-label"
+                                            >
+                                                Deadline
+                                            </label>
+
+
+                                            <input
+                                                type="datetime-local"
+                                                id="assignmentDeadline"
+                                                class="form-control"
+                                                required
+                                            >
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <!-- Description -->
+
+                                    <div class="form-group">
+
+                                        <label
+                                            for="assignmentDescription"
+                                            class="form-label"
+                                        >
+                                            Description
+                                        </label>
+
+
+                                        <textarea
+                                            id="assignmentDescription"
+                                            class="form-control form-textarea"
+                                            rows="5"
+                                            placeholder="Enter assignment instructions"
+                                            required
+                                        ></textarea>
+
+                                    </div>
+
+
+
+                                    <!-- Actions -->
+
+                                    <div class="toolbar-actions">
+
+                                        <button
+                                            type="submit"
+                                            id="assignmentSubmitButton"
+                                            class="btn btn-primary"
+                                        >
+
+                                            <i class="fa-solid fa-plus"></i>
+
+                                            Create Assignment
+
+                                        </button>
+
+
+                                        <button
+                                            type="button"
+                                            id="cancelAssignmentEditButton"
+                                            class="btn btn-outline"
+                                            hidden
+                                        >
+
+                                            <i class="fa-solid fa-xmark"></i>
+
+                                            Cancel Edit
+
+                                        </button>
+
+                                    </div>
+
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             ASSIGNMENT LIST
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Course Work
+                                    </span>
+
+                                    <h2>
+                                        Assignments
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    id="assignmentCount"
+                                    class="badge badge-primary"
+                                >
+                                    0 Assignments
+                                </span>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <div id="assignmentList">
+
+                                    <div class="empty-state">
+
+                                        <div class="empty-state-icon">
+
+                                            <i class="fa-solid fa-list-check"></i>
+
+                                        </div>
+
+
+                                        <h3>
+                                            Select a course
+                                        </h3>
+
+
+                                        <p>
+                                            Choose a course above to manage
+                                            its assignments.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <div id="footer-container"></div>
+
+
+
+    <script src="js/script.js"></script>
+
+    <script src="js/admin-assignments.js"></script>
+
+
+</body>
+
+</html>
