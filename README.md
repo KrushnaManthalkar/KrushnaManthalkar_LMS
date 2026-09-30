@@ -76,3 +76,29 @@ Implemented complete admin assignment management.
 
 #### Status
 ✅ Tested and working
+
+### Phase 4 — Admin Submission Review ✅
+
+Implemented complete admin submission review management.
+
+#### Features
+- Select course
+- Select assignment
+- View student submissions
+- View student name and email
+- Open submitted work
+- Enter marks
+- Validate marks against maximum marks
+- Add instructor feedback
+- Update submission status
+- Save submission reviews
+- Reviewed data persisted through backend API
+- Student can view marks and feedback
+- Admin-only access protection
+
+#### Admin Submission APIs
+- `GET /api/submissions/assignment/:assignmentId`
+- `PUT /api/submissions/:id`
+
+#### Status
+✅ Tested and working

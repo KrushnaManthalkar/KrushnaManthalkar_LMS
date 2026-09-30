@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Review LMS student assignment submissions."
+    >
+
+    <title>LMS — Review Submissions</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-file-circle-check"></i>
+
+                        Admin Management
+
+                    </span>
+
+
+                    <h1>
+                        Review Submissions
+                    </h1>
+
+
+                    <p>
+                        Review student submissions, assign marks
+                        and provide feedback.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="dashboard-layout">
+
+
+                    <!-- =================================================
+                         SIDEBAR
+                         ================================================= -->
+
+                    <aside class="dashboard-sidebar">
+
+                        <nav class="dashboard-nav">
+
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-gauge-high"></i>
+
+                                Dashboard
+
+                            </a>
+
+
+                            <a
+                                href="admin-courses.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-book-open"></i>
+
+                                Manage Courses
+
+                            </a>
+
+
+                            <a
+                                href="admin-modules.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-layer-group"></i>
+
+                                Manage Modules
+
+                            </a>
+
+
+                            <a
+                                href="admin-assignments.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-list-check"></i>
+
+                                Manage Assignments
+
+                            </a>
+
+
+                            <a
+                                href="admin-submissions.html"
+                                class="dashboard-nav-item active"
+                            >
+
+                                <i class="fa-solid fa-file-circle-check"></i>
+
+                                Review Submissions
+
+                            </a>
+
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-users"></i>
+
+                                Manage Students
+
+                            </a>
+
+
+                        </nav>
+
+                    </aside>
+
+
+
+                    <!-- =================================================
+                         MAIN CONTENT
+                         ================================================= -->
+
+                    <div class="dashboard-content">
+
+
+                        <!-- =================================================
+                             COURSE SELECTOR
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Course Selection
+                                    </span>
+
+                                    <h2>
+                                        Select Course
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <label
+                                    for="courseSelect"
+                                    class="form-label"
+                                >
+                                    Course
+                                </label>
+
+
+                                <select
+                                    id="courseSelect"
+                                    class="form-control form-select"
+                                >
+
+                                    <option value="">
+                                        Select a course
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             ASSIGNMENT SELECTOR
+                             ================================================= -->
+
+                        <div
+                            id="assignmentSelectorPanel"
+                            class="panel"
+                            hidden
+                        >
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Assignment
+                                    </span>
+
+                                    <h2>
+                                        Select Assignment
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <label
+                                    for="assignmentSelect"
+                                    class="form-label"
+                                >
+                                    Assignment
+                                </label>
+
+
+                                <select
+                                    id="assignmentSelect"
+                                    class="form-control form-select"
+                                >
+
+                                    <option value="">
+                                        Select an assignment
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             MESSAGE
+                             ================================================= -->
+
+                        <div
+                            id="submissionMessage"
+                            aria-live="polite"
+                        ></div>
+
+
+
+                        <!-- =================================================
+                             SUBMISSIONS
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Student Work
+                                    </span>
+
+                                    <h2>
+                                        Submissions
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    id="submissionCount"
+                                    class="badge badge-primary"
+                                >
+                                    0 Submissions
+                                </span>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <div id="submissionList">
+
+                                    <div class="empty-state">
+
+                                        <div class="empty-state-icon">
+
+                                            <i class="fa-solid fa-file-circle-check"></i>
+
+                                        </div>
+
+
+                                        <h3>
+                                            Select an assignment
+                                        </h3>
+
+
+                                        <p>
+                                            Choose a course and assignment
+                                            to view student submissions.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <div id="footer-container"></div>
+
+
+
+    <script src="js/script.js"></script>
+
+    <script src="js/admin-submissions.js"></script>
+
+
+</body>
+
+</html>
