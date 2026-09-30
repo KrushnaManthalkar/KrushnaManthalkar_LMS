@@ -144,28 +144,76 @@ router.delete(
   roleMiddleware("admin"),
   async (req, res) => {
     try {
-      const module = await Module.findById(req.params.id);
+
+      const module =
+        await Module.findById(req.params.id);
 
       if (!module) {
+
         return res.status(404).json({
           message: "Module not found."
         });
+
       }
 
-      await Module.findByIdAndDelete(req.params.id);
+
+      // Store course ID before deleting
+      const courseId =
+        module.courseId;
+
+
+      // Delete selected module
+      await Module.findByIdAndDelete(
+        req.params.id
+      );
+
+
+      // Re-order remaining modules
+      const remainingModules =
+        await Module.find({
+          courseId
+        }).sort({
+          moduleOrder: 1
+        });
+
+
+      // Reset module order: 1, 2, 3, ...
+      for (
+        let index = 0;
+        index < remainingModules.length;
+        index++
+      ) {
+
+        remainingModules[index].moduleOrder =
+          index + 1;
+
+        await remainingModules[index].save();
+
+      }
+
 
       res.status(200).json({
-        message: "Module deleted successfully."
+
+        message:
+          "Module deleted successfully.",
+
       });
 
+
     } catch (error) {
+
       res.status(500).json({
-        message: "Failed to delete module.",
-        error: error.message
+
+        message:
+          "Failed to delete module.",
+
+        error:
+          error.message
+
       });
+
     }
   }
 );
-
 
 module.exports = router;

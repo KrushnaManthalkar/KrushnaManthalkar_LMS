@@ -24,3 +24,29 @@ Implemented complete admin course management.
 
 #### Status
 ✅ Tested and working
+
+### Phase 2 — Admin Module Management ✅
+
+Implemented complete admin module management.
+
+#### Features
+- Select course
+- View course modules
+- Add new modules
+- Edit existing modules
+- Delete modules
+- Automatic module order re-indexing after deletion
+- Move modules up and down
+- Module order persistence
+- Learning resource links
+- Admin-only access protection
+- Module data persisted through backend API
+
+#### Admin Module APIs
+- `POST /api/modules`
+- `GET /api/modules/course/:courseId`
+- `PUT /api/modules/:id`
+- `DELETE /api/modules/:id`
+
+#### Status
+✅ Tested and working

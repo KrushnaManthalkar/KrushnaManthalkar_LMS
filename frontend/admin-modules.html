@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage LMS course modules."
+    >
+
+    <title>LMS — Manage Modules</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Shared Navbar -->
+
+    <div id="navbar-container"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-layer-group"></i>
+
+                        Admin Management
+
+                    </span>
+
+
+                    <h1>
+                        Manage Modules
+                    </h1>
+
+
+                    <p>
+                        Add, edit, delete and organize modules
+                        for your courses.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MODULE MANAGEMENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="dashboard-layout">
+
+
+                    <!-- =================================================
+                         SIDEBAR
+                         ================================================= -->
+
+                    <aside class="dashboard-sidebar">
+
+                        <nav class="dashboard-nav">
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-gauge-high"></i>
+
+                                Dashboard
+
+                            </a>
+
+
+                            <a
+                                href="admin-courses.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-book-open"></i>
+
+                                Manage Courses
+
+                            </a>
+
+
+                            <a
+                                href="admin-modules.html"
+                                class="dashboard-nav-item active"
+                            >
+
+                                <i class="fa-solid fa-layer-group"></i>
+
+                                Manage Modules
+
+                            </a>
+
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-list-check"></i>
+
+                                Manage Assignments
+
+                            </a>
+
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-users"></i>
+
+                                Manage Students
+
+                            </a>
+
+                        </nav>
+
+                    </aside>
+
+
+
+                    <!-- =================================================
+                         MAIN CONTENT
+                         ================================================= -->
+
+                    <div class="dashboard-content">
+
+
+                        <!-- =================================================
+                             COURSE SELECTOR
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Course Selection
+                                    </span>
+
+                                    <h2>
+                                        Select Course
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <label
+                                    for="courseSelect"
+                                    class="form-label"
+                                >
+                                    Course
+                                </label>
+
+
+                                <select
+                                    id="courseSelect"
+                                    class="form-control form-select"
+                                >
+
+                                    <option value="">
+                                        Select a course
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             MODULE FORM
+                             ================================================= -->
+
+                        <div
+                            id="moduleFormPanel"
+                            class="panel"
+                            hidden
+                        >
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Module
+                                    </span>
+
+                                    <h2 id="moduleFormTitle">
+                                        Add New Module
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+
+                                <div
+                                    id="moduleMessage"
+                                    aria-live="polite"
+                                ></div>
+
+
+                                <form id="moduleForm">
+
+
+                                    <div class="form-grid">
+
+
+                                        <!-- Title -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="moduleTitle"
+                                                class="form-label"
+                                            >
+                                                Module Title
+                                            </label>
+
+
+                                            <input
+                                                type="text"
+                                                id="moduleTitle"
+                                                class="form-control"
+                                                placeholder="Enter module title"
+                                                required
+                                            >
+
+                                        </div>
+
+
+
+                                        <!-- Order -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="moduleOrder"
+                                                class="form-label"
+                                            >
+                                                Module Order
+                                            </label>
+
+
+                                            <input
+                                                type="number"
+                                                id="moduleOrder"
+                                                class="form-control"
+                                                min="1"
+                                                placeholder="1"
+                                                required
+                                            >
+
+                                        </div>
+
+
+
+                                        <!-- Resource -->
+
+                                        <div class="form-group">
+
+                                            <label
+                                                for="moduleResource"
+                                                class="form-label"
+                                            >
+                                                Learning Resource Link
+                                            </label>
+
+
+                                            <input
+                                                type="url"
+                                                id="moduleResource"
+                                                class="form-control"
+                                                placeholder="https://example.com/resource"
+                                            >
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <!-- Description -->
+
+                                    <div class="form-group">
+
+                                        <label
+                                            for="moduleDescription"
+                                            class="form-label"
+                                        >
+                                            Description
+                                        </label>
+
+
+                                        <textarea
+                                            id="moduleDescription"
+                                            class="form-control form-textarea"
+                                            rows="5"
+                                            placeholder="Enter module description"
+                                            required
+                                        ></textarea>
+
+                                    </div>
+
+
+
+                                    <!-- Actions -->
+
+                                    <div class="toolbar-actions">
+
+                                        <button
+                                            type="submit"
+                                            id="moduleSubmitButton"
+                                            class="btn btn-primary"
+                                        >
+
+                                            <i class="fa-solid fa-plus"></i>
+
+                                            Add Module
+
+                                        </button>
+
+
+                                        <button
+                                            type="button"
+                                            id="cancelModuleEditButton"
+                                            class="btn btn-outline"
+                                            hidden
+                                        >
+
+                                            <i class="fa-solid fa-xmark"></i>
+
+                                            Cancel Edit
+
+                                        </button>
+
+                                    </div>
+
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             MODULE LIST
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Course Content
+                                    </span>
+
+                                    <h2>
+                                        Course Modules
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    id="moduleCount"
+                                    class="badge badge-primary"
+                                >
+                                    0 Modules
+                                </span>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <div
+                                    id="moduleList"
+                                >
+
+                                    <div class="empty-state">
+
+                                        <div class="empty-state-icon">
+
+                                            <i class="fa-solid fa-layer-group"></i>
+
+                                        </div>
+
+
+                                        <h3>
+                                            Select a course
+                                        </h3>
+
+
+                                        <p>
+                                            Choose a course above to manage
+                                            its modules.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Shared Footer -->
+
+    <div id="footer-container"></div>
+
+
+
+    <!-- Global JavaScript -->
+
+    <script src="js/script.js"></script>
+
+    <!-- Admin Module JavaScript -->
+
+    <script src="js/admin-modules.js"></script>
+
+
+</body>
+
+</html>
