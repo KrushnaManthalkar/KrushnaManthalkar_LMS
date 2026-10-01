@@ -19,6 +19,8 @@ const moduleCourseId =
 let courseData = null;
 let courseModules = [];
 
+// IDs of modules already completed by the logged-in student
+let completedModuleIds = [];
 
 
 /* =========================================================
@@ -68,6 +70,8 @@ async function loadModulesPage() {
     try {
 
         await loadCourse();
+
+        await loadCourseProgress();
 
         await loadModules();
 
@@ -156,6 +160,63 @@ async function loadModules() {
 
 
     renderModules();
+}
+
+/* =========================================================
+   LOAD COURSE PROGRESS
+========================================================= */
+
+async function loadCourseProgress() {
+
+    const result =
+        await LMS.api(
+            `/progress/${encodeURIComponent(moduleCourseId)}`
+        );
+
+
+    if (!result.ok) {
+
+        console.warn(
+            "Unable to load course progress:",
+            result.data?.message
+        );
+
+        completedModuleIds = [];
+
+        return;
+    }
+
+
+    const completedModules =
+        Array.isArray(
+            result.data?.completedModules
+        )
+            ? result.data.completedModules
+            : [];
+
+
+    completedModuleIds =
+        completedModules
+            .map(module => {
+
+                if (
+                    typeof module === "string"
+                ) {
+
+                    return module;
+
+                }
+
+
+                return module?._id ||
+                    module?.id ||
+                    module?.moduleId ||
+                    null;
+
+            })
+            .filter(Boolean)
+            .map(String);
+
 }
 
 
@@ -384,7 +445,7 @@ function renderModules() {
 
 /* =========================================================
    MODULE ITEM
-   ========================================================= */
+========================================================= */
 
 function createModuleItem(
     module,
@@ -452,6 +513,51 @@ function createModuleItem(
             `;
 
 
+    /* =====================================================
+       COMPLETION STATE
+    ===================================================== */
+
+    const isCompleted =
+        completedModuleIds.includes(
+            String(moduleId)
+        );
+
+
+    const completionButton =
+        isCompleted
+            ? `
+                <button
+                    type="button"
+                    class="btn btn-success btn-sm module-complete-button"
+                    data-module-id="${LMS.escapeHTML(moduleId)}"
+                    disabled
+                >
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Completed
+
+                </button>
+            `
+            : `
+                <button
+                    type="button"
+                    class="btn btn-outline btn-sm module-complete-button"
+                    data-module-id="${LMS.escapeHTML(moduleId)}"
+                >
+
+                    <i class="fa-regular fa-circle-check"></i>
+
+                    Mark Complete
+
+                </button>
+            `;
+
+
+    /* =====================================================
+       MODULE HTML
+    ===================================================== */
+
     return `
         <article
             class="module-item"
@@ -475,6 +581,7 @@ function createModuleItem(
                         ${title}
                     </h3>
 
+
                     <span class="badge badge-secondary">
 
                         Module ${order}
@@ -489,7 +596,6 @@ function createModuleItem(
                 </p>
 
 
-
                 <div class="module-resource">
 
                     ${resourceButton}
@@ -498,21 +604,18 @@ function createModuleItem(
 
             </div>
 
+
+
             <div class="module-actions">
-                <button
-                    type="button"
-                    class="btn btn-outline btn-sm module-complete-button"
-                    data-module-id="${LMS.escapeHTML(moduleId)}"
-                >
-                    <i class="fa-regular fa-circle-check"></i>
-                    Mark Complete
-                </button>
+
+                ${completionButton}
+
             </div>
+
 
         </article>
     `;
 }
-
 
 
 
@@ -542,6 +645,12 @@ async function completeModule(moduleId, button) {
 
         button.classList.remove("btn-outline");
         button.classList.add("btn-success");
+        completedModuleIds.push(
+    String(moduleId)
+);
+
+button.disabled = true;
+
     } catch (error) {
         console.error("Module completion error:", error);
         button.disabled = false;

@@ -387,7 +387,7 @@ function createMyCourseCard(
 
 
                     <a
-                        href="course-details.html?id=${encodeURIComponent(courseId)}"
+                        href="modules.html?courseId=${encodeURIComponent(courseId)}"
                         class="btn btn-primary btn-sm"
                     >
 

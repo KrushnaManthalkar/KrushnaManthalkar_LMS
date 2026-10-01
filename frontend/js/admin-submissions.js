@@ -87,19 +87,72 @@ function showSubmissionMessage(
         return;
     }
 
-
     submissionMessage.innerHTML = `
 
-        <div class="alert alert-${type}">
+        <div class="submission-toast submission-toast-${type}">
 
-            ${LMS.escapeHTML(message)}
+            <i class="${
+                type === "success"
+                    ? "fa-solid fa-circle-check"
+                    : type === "danger"
+                        ? "fa-solid fa-circle-exclamation"
+                        : "fa-solid fa-circle-info"
+            }"></i>
+
+            <span>
+                ${LMS.escapeHTML(message)}
+            </span>
+
+            <button
+                type="button"
+                class="submission-toast-close"
+                aria-label="Close message"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
         </div>
 
     `;
 
-}
+    const toast =
+        submissionMessage.querySelector(
+            ".submission-toast"
+        );
 
+    const closeButton =
+        submissionMessage.querySelector(
+            ".submission-toast-close"
+        );
+
+    if (closeButton) {
+
+        closeButton.addEventListener(
+            "click",
+            () => {
+
+                toast?.remove();
+
+            }
+        );
+
+    }
+
+    window.clearTimeout(
+        showSubmissionMessage.timeoutId
+    );
+
+    showSubmissionMessage.timeoutId =
+        window.setTimeout(
+            () => {
+
+                toast?.remove();
+
+            },
+            3500
+        );
+
+}
 
 
 /* =========================================================

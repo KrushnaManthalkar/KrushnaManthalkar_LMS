@@ -922,7 +922,7 @@ function setEnrolledButton(button) {
     button.onclick = () => {
 
         window.location.href =
-            "my-courses.html";
+            `modules.html?courseId=${encodeURIComponent(courseId)}`;
 
     };
 
