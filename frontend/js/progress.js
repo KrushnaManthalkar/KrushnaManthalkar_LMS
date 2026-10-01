@@ -448,18 +448,22 @@ function createProgressCard(
 
 
                 <a
-                    href="course-details.html?id=${encodeURIComponent(courseId)}"
-                    class="btn btn-primary btn-sm"
-                >
+    href="${
+        progress === 100
+            ? `course-details.html?id=${encodeURIComponent(courseId)}`
+            : `modules.html?courseId=${encodeURIComponent(courseId)}`
+    }"
+    class="btn btn-primary btn-sm"
+>
 
-                    ${progress === 100
-                        ? "Review Course"
-                        : "Continue Learning"
-                    }
+    ${progress === 100
+        ? "Review Course"
+        : "Continue Learning"
+    }
 
-                    <i class="fa-solid fa-arrow-right"></i>
+    <i class="fa-solid fa-arrow-right"></i>
 
-                </a>
+</a>
 
 
             </div>

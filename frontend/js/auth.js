@@ -271,7 +271,6 @@ if (registerForm) {
 }
 
 
-
 /* =========================================================
    AUTH PAGE ACCESS CONTROL
    ========================================================= */
@@ -289,15 +288,35 @@ document.addEventListener(
             LMS.isAuthenticated();
 
         if (
-            authenticated &&
-            (
+            !authenticated ||
+            !(
                 currentPage === "login.html" ||
                 currentPage === "register.html"
             )
         ) {
-            window.location.href =
-                "dashboard.html";
+            return;
         }
 
+        const user =
+            LMS.getCurrentUser();
+
+        if (!user) {
+            return;
+        }
+
+        /* ---------------------------------------------
+           ROLE-BASED REDIRECT
+        --------------------------------------------- */
+
+        if (user.role === "admin") {
+
+            window.location.href =
+                "admin-dashboard.html";
+
+            return;
+        }
+
+        window.location.href =
+            "dashboard.html";
     }
 );

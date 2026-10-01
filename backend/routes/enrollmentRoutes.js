@@ -4,6 +4,9 @@ const authMiddleware = require("../middleware/authMiddleware");
 const roleMiddleware = require("../middleware/roleMiddleware");
 const Enrollment = require("../models/Enrollment");
 const Course = require("../models/Course");
+const {
+  isValidObjectId
+} = require("../utils/validation");
 
 const router = express.Router();
 
@@ -24,6 +27,11 @@ router.post(
   async (req, res) => {
     try {
       const { courseId } = req.body;
+      if (!isValidObjectId(courseId)) {
+  return res.status(400).json({
+    message: "Invalid course ID."
+  });
+}
 
       if (!courseId) {
         return res.status(400).json({
@@ -66,7 +74,7 @@ router.post(
     } catch (error) {
       res.status(500).json({
         message: "Enrollment failed.",
-        error: error.message
+        
       });
     }
   }
@@ -93,7 +101,7 @@ router.get(
     } catch (error) {
       res.status(500).json({
         message: "Failed to fetch enrolled courses.",
-        error: error.message
+        
       });
     }
   }
@@ -106,6 +114,11 @@ router.get(
   roleMiddleware("student"),
   async (req, res) => {
     try {
+           if (!isValidObjectId(req.params.courseId)) {
+  return res.status(400).json({
+    message: "Invalid course ID."
+  });
+}
       const enrollment = await Enrollment.findOne({
         studentId: req.user.id,
         courseId: req.params.courseId
@@ -126,7 +139,7 @@ router.get(
     } catch (error) {
       res.status(500).json({
         message: "Failed to fetch enrollment.",
-        error: error.message
+        
       });
     }
   }

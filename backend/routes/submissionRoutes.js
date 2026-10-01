@@ -5,6 +5,10 @@ const roleMiddleware = require("../middleware/roleMiddleware");
 const Submission = require("../models/Submission");
 const Assignment = require("../models/Assignment");
 const Enrollment = require("../models/Enrollment");
+const {
+  isValidObjectId,
+  isNonEmptyString
+} = require("../utils/validation");
 
 const router = express.Router();
 
@@ -28,6 +32,18 @@ router.post(
         assignmentId,
         submissionLink
       } = req.body;
+
+      if (!isValidObjectId(assignmentId)) {
+  return res.status(400).json({
+    message: "Invalid assignment ID."
+  });
+}
+
+if (!isNonEmptyString(submissionLink)) {
+  return res.status(400).json({
+    message: "Submission link is required."
+  });
+}
 
       if (!assignmentId || !submissionLink) {
         return res.status(400).json({
@@ -81,7 +97,7 @@ router.post(
       const submission = await Submission.create({
         assignmentId,
         studentId: req.user.id,
-        submissionLink
+        submissionLink: submissionLink.trim()
       });
 
       res.status(201).json({
@@ -92,7 +108,7 @@ router.post(
     } catch (error) {
       res.status(500).json({
         message: "Assignment submission failed.",
-        error: error.message
+        
       });
     }
   }
@@ -119,7 +135,7 @@ router.get(
     } catch (error) {
       res.status(500).json({
         message: "Failed to fetch submissions.",
-        error: error.message
+        
       });
     }
   }
@@ -132,6 +148,11 @@ router.get(
   roleMiddleware("admin"),
   async (req, res) => {
     try {
+      if (!isValidObjectId(req.params.assignmentId)) {
+  return res.status(400).json({
+    message: "Invalid assignment ID."
+  });
+}
       const submissions = await Submission.find({
         assignmentId: req.params.assignmentId
       })
@@ -147,7 +168,7 @@ router.get(
     } catch (error) {
       res.status(500).json({
         message: "Failed to fetch submissions.",
-        error: error.message
+        
       });
     }
   }
@@ -160,6 +181,11 @@ router.put(
   roleMiddleware("admin"),
   async (req, res) => {
     try {
+      if (!isValidObjectId(req.params.id)) {
+  return res.status(400).json({
+    message: "Invalid submission ID."
+  });
+}
       const { marks, feedback, status } = req.body;
 
       const submission = await Submission.findById(req.params.id);
@@ -174,6 +200,12 @@ router.put(
         const assignment = await Assignment.findById(
           submission.assignmentId
         );
+
+        if (!assignment) {
+  return res.status(404).json({
+    message: "Assignment not found."
+  });
+}
 
         const numericMarks = Number(marks);
         const maximumMarks = Number(
@@ -213,7 +245,7 @@ router.put(
     } catch (error) {
       res.status(500).json({
         message: "Failed to review submission.",
-        error: error.message
+        
       });
     }
   }

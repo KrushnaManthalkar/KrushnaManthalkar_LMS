@@ -4,6 +4,11 @@ const authMiddleware = require("../middleware/authMiddleware");
 const roleMiddleware = require("../middleware/roleMiddleware");
 const Module = require("../models/Module");
 const Course = require("../models/Course");
+const {
+  isValidObjectId,
+  isNonEmptyString,
+  isPositiveInteger
+} = require("../utils/validation");
 
 const router = express.Router();
 
@@ -30,6 +35,30 @@ router.post(
         resourceLink,
         moduleOrder
       } = req.body;
+
+            if (!isValidObjectId(courseId)) {
+        return res.status(400).json({
+          message: "Invalid course ID."
+        });
+      }
+
+      if (!isNonEmptyString(title)) {
+        return res.status(400).json({
+          message: "Module title cannot be empty."
+        });
+      }
+
+      if (!isNonEmptyString(description)) {
+        return res.status(400).json({
+          message: "Module description cannot be empty."
+        });
+      }
+
+      if (!isPositiveInteger(moduleOrder)) {
+        return res.status(400).json({
+          message: "Module order must be a positive integer."
+        });
+      }
 
       if (!courseId || !title || !description || !moduleOrder) {
         return res.status(400).json({
@@ -64,7 +93,7 @@ router.post(
     } catch (error) {
       res.status(500).json({
         message: "Failed to create module.",
-        error: error.message
+        
       });
     }
   }
@@ -76,6 +105,11 @@ router.get(
   authMiddleware,
   async (req, res) => {
     try {
+            if (!isValidObjectId(req.params.courseId)) {
+        return res.status(400).json({
+          message: "Invalid course ID."
+        });
+      }
       const modules = await Module.find({
         courseId: req.params.courseId
       }).sort({ moduleOrder: 1 });
@@ -88,7 +122,7 @@ router.get(
     } catch (error) {
       res.status(500).json({
         message: "Failed to fetch modules.",
-        error: error.message
+        
       });
     }
   }
@@ -101,12 +135,44 @@ router.put(
   roleMiddleware("admin"),
   async (req, res) => {
     try {
+            if (!isValidObjectId(req.params.id)) {
+        return res.status(400).json({
+          message: "Invalid module ID."
+        });
+      }
       const {
         title,
         description,
         resourceLink,
         moduleOrder
       } = req.body;
+
+            if (
+        title !== undefined &&
+        !isNonEmptyString(title)
+      ) {
+        return res.status(400).json({
+          message: "Module title cannot be empty."
+        });
+      }
+
+      if (
+        description !== undefined &&
+        !isNonEmptyString(description)
+      ) {
+        return res.status(400).json({
+          message: "Module description cannot be empty."
+        });
+      }
+
+      if (
+        moduleOrder !== undefined &&
+        !isPositiveInteger(moduleOrder)
+      ) {
+        return res.status(400).json({
+          message: "Module order must be a positive integer."
+        });
+      }
 
       const module = await Module.findById(req.params.id);
 
@@ -131,7 +197,7 @@ router.put(
     } catch (error) {
       res.status(500).json({
         message: "Failed to update module.",
-        error: error.message
+        
       });
     }
   }
@@ -144,6 +210,12 @@ router.delete(
   roleMiddleware("admin"),
   async (req, res) => {
     try {
+
+            if (!isValidObjectId(req.params.id)) {
+        return res.status(400).json({
+          message: "Invalid module ID."
+        });
+      }
 
       const module =
         await Module.findById(req.params.id);

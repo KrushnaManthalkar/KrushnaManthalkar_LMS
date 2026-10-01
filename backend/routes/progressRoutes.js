@@ -6,6 +6,9 @@ const roleMiddleware = require("../middleware/roleMiddleware");
 const Enrollment = require("../models/Enrollment");
 const Course = require("../models/Course");
 const Module = require("../models/Module");
+const {
+  isValidObjectId
+} = require("../utils/validation");
 
 const router = express.Router();
 
@@ -31,6 +34,11 @@ router.get(
   roleMiddleware("student"),
   async (req, res) => {
     try {
+      if (!isValidObjectId(req.params.courseId)) {
+  return res.status(400).json({
+    message: "Invalid course ID."
+  });
+}
       const enrollment = await Enrollment.findOne({
         studentId: req.user.id,
         courseId: req.params.courseId
@@ -56,7 +64,7 @@ router.get(
     } catch (error) {
       res.status(500).json({
         message: "Failed to fetch course progress.",
-        error: error.message
+        
       });
     }
   }
@@ -72,6 +80,18 @@ router.post(
     try {
       const { courseId, moduleId } =
         req.params;
+
+        if (!isValidObjectId(courseId)) {
+  return res.status(400).json({
+    message: "Invalid course ID."
+  });
+}
+
+if (!isValidObjectId(moduleId)) {
+  return res.status(400).json({
+    message: "Invalid module ID."
+  });
+}
 
       // Find student's enrollment
       const enrollment =
@@ -209,7 +229,7 @@ router.post(
       res.status(500).json({
         message:
           "Failed to complete module.",
-        error: error.message
+        
       });
     }
   }

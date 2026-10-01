@@ -4,6 +4,10 @@ const authMiddleware = require("../middleware/authMiddleware");
 const roleMiddleware = require("../middleware/roleMiddleware");
 const Assignment = require("../models/Assignment");
 const Course = require("../models/Course");
+const {
+  isValidObjectId,
+  isNonEmptyString
+} = require("../utils/validation");
 
 const router = express.Router();
 
@@ -21,6 +25,44 @@ router.post(
         deadline,
         maximumMarks
       } = req.body;
+
+      if (!isValidObjectId(courseId)) {
+  return res.status(400).json({
+    message: "Invalid course ID."
+  });
+}
+
+if (!isNonEmptyString(title)) {
+  return res.status(400).json({
+    message: "Assignment title cannot be empty."
+  });
+}
+
+if (!isNonEmptyString(description)) {
+  return res.status(400).json({
+    message: "Assignment description cannot be empty."
+  });
+}
+
+if (
+  !deadline ||
+  Number.isNaN(new Date(deadline).getTime())
+) {
+  return res.status(400).json({
+    message: "A valid assignment deadline is required."
+  });
+}
+
+const numericMaximumMarks = Number(maximumMarks);
+
+if (
+  !Number.isFinite(numericMaximumMarks) ||
+  numericMaximumMarks <= 0
+) {
+  return res.status(400).json({
+    message: "Maximum marks must be greater than 0."
+  });
+}
 
       if (
         !courseId ||
@@ -50,7 +92,7 @@ router.post(
         title,
         description,
         deadline,
-        maximumMarks
+        maximumMarks: numericMaximumMarks
       });
 
       res.status(201).json({
@@ -61,7 +103,7 @@ router.post(
     } catch (error) {
       res.status(500).json({
         message: "Failed to create assignment.",
-        error: error.message
+        
       });
     }
   }
@@ -73,6 +115,11 @@ router.get(
   authMiddleware,
   async (req, res) => {
     try {
+      if (!isValidObjectId(req.params.courseId)) {
+  return res.status(400).json({
+    message: "Invalid course ID."
+  });
+}
       const assignments = await Assignment.find({
         courseId: req.params.courseId
       }).sort({ deadline: 1 });
@@ -85,7 +132,7 @@ router.get(
     } catch (error) {
       res.status(500).json({
         message: "Failed to fetch assignments.",
-        error: error.message
+        
       });
     }
   }
@@ -98,6 +145,11 @@ router.put(
   roleMiddleware("admin"),
   async (req, res) => {
     try {
+      if (!isValidObjectId(req.params.id)) {
+  return res.status(400).json({
+    message: "Invalid assignment ID."
+  });
+}
       const {
         title,
         description,
@@ -105,6 +157,46 @@ router.put(
         maximumMarks
       } = req.body;
 
+      if (
+  title !== undefined &&
+  !isNonEmptyString(title)
+) {
+  return res.status(400).json({
+    message: "Assignment title cannot be empty."
+  });
+}
+
+if (
+  description !== undefined &&
+  !isNonEmptyString(description)
+) {
+  return res.status(400).json({
+    message: "Assignment description cannot be empty."
+  });
+}
+
+if (
+  deadline !== undefined &&
+  Number.isNaN(new Date(deadline).getTime())
+) {
+  return res.status(400).json({
+    message: "Invalid assignment deadline."
+  });
+}
+
+if (maximumMarks !== undefined) {
+  const numericMaximumMarks = Number(maximumMarks);
+
+  if (
+    !Number.isFinite(numericMaximumMarks) ||
+    numericMaximumMarks <= 0
+  ) {
+    return res.status(400).json({
+      message: "Maximum marks must be greater than 0."
+    });
+  }
+}
+      
       const assignment = await Assignment.findById(req.params.id);
 
       if (!assignment) {
@@ -116,7 +208,7 @@ router.put(
       assignment.title = title ?? assignment.title;
       assignment.description = description ?? assignment.description;
       assignment.deadline = deadline ?? assignment.deadline;
-      assignment.maximumMarks = maximumMarks ?? assignment.maximumMarks;
+      assignment.maximumMarks = maximumMarks !== undefined ? Number(maximumMarks) : assignment.maximumMarks;
 
       await assignment.save();
 
@@ -128,7 +220,7 @@ router.put(
     } catch (error) {
       res.status(500).json({
         message: "Failed to update assignment.",
-        error: error.message
+        
       });
     }
   }
@@ -141,6 +233,11 @@ router.delete(
   roleMiddleware("admin"),
   async (req, res) => {
     try {
+      if (!isValidObjectId(req.params.id)) {
+  return res.status(400).json({
+    message: "Invalid assignment ID."
+  });
+}
       const assignment = await Assignment.findById(req.params.id);
 
       if (!assignment) {
@@ -158,7 +255,7 @@ router.delete(
     } catch (error) {
       res.status(500).json({
         message: "Failed to delete assignment.",
-        error: error.message
+        
       });
     }
   }
