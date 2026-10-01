@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage LMS students and monitor their learning progress."
+    >
+
+    <title>LMS — Students & Progress</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <div id="navbar-container"></div>
+
+
+    <main>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <div class="page-hero-content">
+
+                    <span class="section-eyebrow">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        Admin Management
+
+                    </span>
+
+
+                    <h1>
+                        Students & Progress
+                    </h1>
+
+
+                    <p>
+                        View registered students and monitor
+                        their course learning progress.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="dashboard-layout">
+
+
+                    <!-- =================================================
+                         SIDEBAR
+                         ================================================= -->
+
+                    <aside class="dashboard-sidebar">
+
+                        <nav class="dashboard-nav">
+
+
+                            <a
+                                href="admin-dashboard.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-gauge-high"></i>
+
+                                Dashboard
+
+                            </a>
+
+
+                            <a
+                                href="admin-courses.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-book-open"></i>
+
+                                Manage Courses
+
+                            </a>
+
+
+                            <a
+                                href="admin-modules.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-layer-group"></i>
+
+                                Manage Modules
+
+                            </a>
+
+
+                            <a
+                                href="admin-assignments.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-list-check"></i>
+
+                                Manage Assignments
+
+                            </a>
+
+
+                            <a
+                                href="admin-submissions.html"
+                                class="dashboard-nav-item"
+                            >
+
+                                <i class="fa-solid fa-file-circle-check"></i>
+
+                                Review Submissions
+
+                            </a>
+
+
+                            <a
+                                href="admin-students.html"
+                                class="dashboard-nav-item active"
+                            >
+
+                                <i class="fa-solid fa-users"></i>
+
+                                Students & Progress
+
+                            </a>
+
+
+                        </nav>
+
+                    </aside>
+
+
+
+                    <!-- =================================================
+                         MAIN CONTENT
+                         ================================================= -->
+
+                    <div class="dashboard-content">
+
+
+                        <!-- =================================================
+                             STUDENT STATISTICS
+                             ================================================= -->
+
+                        <div class="stat-grid-3">
+
+
+                            <article class="metric-card">
+
+                                <div class="metric-icon">
+
+                                    <i class="fa-solid fa-users"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span class="metric-label">
+                                        Students
+                                    </span>
+
+
+                                    <strong
+                                        id="studentTotal"
+                                        class="metric-value"
+                                    >
+                                        0
+                                    </strong>
+
+                                </div>
+
+                            </article>
+
+
+
+                            <article class="metric-card">
+
+                                <div class="metric-icon">
+
+                                    <i class="fa-solid fa-book-open"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span class="metric-label">
+                                        Enrollments
+                                    </span>
+
+
+                                    <strong
+                                        id="enrollmentTotal"
+                                        class="metric-value"
+                                    >
+                                        0
+                                    </strong>
+
+                                </div>
+
+                            </article>
+
+
+
+                            <article class="metric-card">
+
+                                <div class="metric-icon">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span class="metric-label">
+                                        Completed
+                                    </span>
+
+
+                                    <strong
+                                        id="completedTotal"
+                                        class="metric-value"
+                                    >
+                                        0
+                                    </strong>
+
+                                </div>
+
+                            </article>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             STUDENTS
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Registered Users
+                                    </span>
+
+                                    <h2>
+                                        All Students
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    id="studentCount"
+                                    class="badge badge-primary"
+                                >
+                                    0 Students
+                                </span>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+
+                                <div
+                                    id="studentMessage"
+                                    aria-live="polite"
+                                ></div>
+
+
+                                <div id="studentList">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <p>
+                                            Loading students...
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PROGRESS
+                             ================================================= -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Learning Analytics
+                                    </span>
+
+                                    <h2>
+                                        Student Progress
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    id="progressCount"
+                                    class="badge badge-primary"
+                                >
+                                    0 Records
+                                </span>
+
+                            </div>
+
+
+                            <div class="panel-body">
+
+
+                                <div id="progressList">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <p>
+                                            Loading student progress...
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <div id="footer-container"></div>
+
+
+
+    <script src="js/script.js"></script>
+
+    <script src="js/admin-students.js"></script>
+
+
+</body>
+
+</html>
