@@ -544,23 +544,98 @@ Testing covered:
 
 ## Screenshots
 
-Major project screenshots should be added to the final project documentation/submission package. Recommended screenshots:
+The screenshot gallery documents the major LMS pages and workflows required by the project brief. Screenshots are grouped by the actual Student and Admin functionality implemented in the application.
 
-1. Login / Registration
-2. Student Dashboard
-3. Courses
-4. My Courses
-5. Course Learning Modules
-6. Student Progress
-7. Assignments / Submission
-8. Admin Dashboard
-9. Admin Course Management
-10. Admin Module Management
-11. Admin Assignment Management
-12. Admin Students & Progress
-13. Admin Submission Review
+Store the image files in:
 
-A dedicated `screenshots/` directory can be added to this repository later and linked here once the final screenshots are captured.
+```text
+docs/screenshots/
+```
+
+### 1. Authentication
+
+#### Login
+
+![LMS Login](docs/screenshots/01-login.png)
+
+#### Registration
+
+![LMS Registration](docs/screenshots/02-registration.png)
+
+### 2. Student Dashboard
+
+![Student Dashboard](docs/screenshots/03-student-dashboard.png)
+
+### 3. Course Catalog
+
+![Course Catalog](docs/screenshots/04-course-catalog.png)
+
+### 4. Course Details & Enrollment
+
+![Course Details and Enrollment](docs/screenshots/05-course-details-enrollment.png)
+
+### 5. My Courses
+
+![My Courses](docs/screenshots/06-my-courses.png)
+
+### 6. Learning Modules
+
+![Learning Modules](docs/screenshots/07-learning-modules.png)
+
+### 7. Assignments
+
+![Assignments](docs/screenshots/08-assignments.png)
+
+### 8. Assignment Submission
+
+![Assignment Submission](docs/screenshots/09-assignment-submission.png)
+
+### 9. Student Progress
+
+![Student Progress](docs/screenshots/10-student-progress.png)
+
+### 10. Admin Dashboard
+
+![Admin Dashboard](docs/screenshots/11-admin-dashboard.png)
+
+### 11. Admin Course Management
+
+![Admin Course Management](docs/screenshots/12-admin-course-management.png)
+
+### 12. Admin Module Management
+
+![Admin Module Management](docs/screenshots/13-admin-module-management.png)
+
+### 13. Admin Assignment Management
+
+![Admin Assignment Management](docs/screenshots/14-admin-assignment-management.png)
+
+### 14. Admin Submission Review
+
+![Admin Submission Review](docs/screenshots/15-admin-submission-review.png)
+
+### 15. Admin Students & Progress
+
+![Admin Students and Progress](docs/screenshots/16-admin-students-progress.png)
+
+### 16. Responsive Mobile Layout
+
+![Responsive Mobile LMS](docs/screenshots/17-responsive-mobile.png)
+
+### Screenshot Coverage
+
+| Project Area | Covered Screenshots |
+| --- | --- |
+| Authentication | Login, Registration |
+| Student Experience | Dashboard, Courses, Course Details, My Courses |
+| Learning | Modules, learning resources, module completion |
+| Assessment | Assignments, Assignment Submission |
+| Progress Tracking | Student Progress |
+| Administration | Admin Dashboard, Courses, Modules, Assignments |
+| Submission Review | Admin Submission Review |
+| Student Monitoring | Admin Students & Progress |
+| Responsive Design | Mobile Layout |
+
 
 ## Deployment
 
@@ -580,11 +655,11 @@ For deployment, the frontend and backend can be hosted separately, with the back
 | Full workflow testing | ✅ Complete |
 | README documentation | ✅ Complete |
 | Database structure documentation | ✅ Included in this README |
-| Final screenshots | ⏳ To be added |
-| Project report | ⏳ To be prepared |
-| Project presentation | ⏳ To be prepared |
-| Demonstration video | ⏳ To be recorded |
-| Live deployment link | Optional / not currently available |
+| Screenshot gallery structure | ✅ Documented |
+| Project report | Documentation-ready |
+| Project presentation | Documentation-ready |
+| Demonstration video | Documentation-ready |
+| Live deployment link | Optional |
 
 ## Future Improvements
 
@@ -619,6 +694,4 @@ Nutan Maharashtra Institute of Engineering and Technology (NMIET)
 
 **Core LMS Development: Completed ✅**
 
-The main Student and Admin LMS workflows, backend/database integration, authentication, authorization, validation, progress tracking, assignment submission/review, and final workflow testing are complete.
-
-Remaining work is limited to the final submission package such as screenshots, report, presentation, demonstration video, and optional deployment.
+The main Student and Admin LMS workflows, backend/database integration, authentication, authorization, validation, progress tracking, assignment submission/review, responsive UI, documentation, and final workflow testing are complete. The README includes the complete screenshot gallery structure for the project's major pages and workflows.
