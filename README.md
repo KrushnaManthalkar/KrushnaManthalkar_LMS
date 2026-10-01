@@ -1,189 +1,258 @@
-## Development Progress
+# Learning Management System (LMS)
 
-### Phase 1 — Admin Course Management ✅
+A full-stack Learning Management System built to manage online courses, learning modules, enrollments, assignments, submissions, reviews, and student progress through separate Student and Admin workflows.
 
-Implemented complete admin course management.
+This project was developed as an academic/training LMS project and implements the complete core workflow from user authentication and course enrollment to learning progress and assignment evaluation.
 
-#### Features
-- View all courses
-- Create new courses
-- Edit existing courses
-- Delete courses
-- Course difficulty selection
-- Course category and duration
-- Course description
-- Optional course image URL
-- Admin-only access protection
-- Course data persisted through backend API
+## Project Objectives
 
-#### Admin Course APIs
-- `GET /api/courses`
-- `POST /api/courses`
-- `PUT /api/courses/:id`
-- `DELETE /api/courses/:id`
+The project aims to provide a centralized platform where:
 
-#### Status
-✅ Tested and working
+- Students can register, log in, browse courses, enroll, access learning modules, complete modules, track progress, view assignments, submit work, and view marks/feedback.
+- Administrators can manage courses, modules, assignments, students, submissions, and student progress.
+- Authentication, authorization, validation, and protected workflows are handled through a Node.js/Express backend.
+- Application data is stored persistently in MongoDB.
 
-### Phase 2 — Admin Module Management ✅
+## Key Features
 
-Implemented complete admin module management.
+### Student Module
 
-#### Features
-- Select course
-- View course modules
-- Add new modules
-- Edit existing modules
-- Delete modules
-- Automatic module order re-indexing after deletion
-- Move modules up and down
-- Module order persistence
-- Learning resource links
-- Admin-only access protection
-- Module data persisted through backend API
-
-#### Admin Module APIs
-- `POST /api/modules`
-- `GET /api/modules/course/:courseId`
-- `PUT /api/modules/:id`
-- `DELETE /api/modules/:id`
-
-#### Status
-✅ Tested and working
-
-### Phase 3 — Admin Assignment Management ✅
-
-Implemented complete admin assignment management.
-
-#### Features
-- Select course
+- Student registration and login
+- JWT-based authentication
+- Browse available courses
+- View course details
+- Enroll in courses
+- View enrolled courses
+- Continue learning from the dashboard
+- Access ordered course modules
+- Open learning resource links
+- Mark modules as completed
+- Automatic course progress calculation
+- Persistent progress after refresh/login
+- View course completion status
 - View course assignments
-- Create new assignments
-- Edit existing assignments
-- Delete assignments
-- Assignment deadlines
-- Maximum marks
-- Assignment descriptions
-- Admin-only access protection
-- Assignment data persisted through backend API
-- Admin Dashboard assignment navigation
-
-#### Admin Assignment APIs
-- `POST /api/assignments`
-- `GET /api/assignments/course/:courseId`
-- `PUT /api/assignments/:id`
-- `DELETE /api/assignments/:id`
-
-#### Status
-✅ Tested and working
-
-### Phase 4 — Admin Submission Review ✅
-
-Implemented complete admin submission review management.
-
-#### Features
-- Select course
-- Select assignment
-- View student submissions
-- View student name and email
-- Open submitted work
-- Enter marks
-- Validate marks against maximum marks
-- Add instructor feedback
-- Update submission status
-- Save submission reviews
-- Reviewed data persisted through backend API
-- Student can view marks and feedback
-- Admin-only access protection
-
-#### Admin Submission APIs
-- `GET /api/submissions/assignment/:assignmentId`
-- `PUT /api/submissions/:id`
-
-#### Status
-✅ Tested and working
-
-### Phase 5 — Admin Students & Progress ✅
-
-Implemented admin student and progress management.
-
-#### Features
-- View all registered students
-- View student email and registration date
-- View enrolled course count
-- View all student course enrollments
-- View course progress percentage
-- View completed modules
-- View enrollment status
-- View enrollment date
-- Admin-only access protection
-- Student progress synchronized with enrollment data
-
-#### Admin APIs
-- `GET /api/admin/students`
-- `GET /api/admin/student-progress`
-
-#### Status
-✅ Tested and working
-
-## Phase 6 — Student Learning & Workflow Completion ✅
-
-Completed and tested the remaining student-side learning workflows.
-
-### Student Learning Features
-
-- Student dashboard course continuation
-- Continue Learning navigation
-- Direct navigation from enrolled courses to course modules
-- Course module learning page
-- Module completion functionality
-- Module completion persistence after page refresh
-- Course progress calculation and display
-- Learning progress page
-- Course completion status
-- Review Course navigation
-
-### Student Assignment Features
-
-- View course assignments
-- Submit assignment
-- Submission validation
-- Duplicate submission protection
-- Enrollment verification before submission
+- Submit assignments using a submission link
 - Assignment deadline validation
-- Submission history
-- View submitted assignment details
+- Duplicate submission prevention
+- View submission history
+- View marks, status, and instructor feedback
+- Profile and authenticated navigation
 
-### Admin Submission Workflow
+### Admin Module
 
-- Admin can view student submissions
-- Admin can select course and assignment
-- Admin can open submitted work
-- Admin can assign marks
-- Admin can update submission status
-- Admin can provide student feedback
-- Review changes are persisted through the backend
-- Review success notification implemented without page refresh
+- Protected Admin dashboard
+- Dashboard statistics for students, courses, modules, assignments, and submissions
+- Create, view, edit, and delete courses
+- Set category, duration, difficulty, description, and optional image
+- Create, view, edit, delete, and order course modules
+- Automatic module re-indexing after deletion
+- Add learning resource links
+- Create, view, edit, and delete assignments
+- Configure assignment deadlines and maximum marks
+- View registered students
+- View student enrollment and progress data
+- View assignment submissions
+- Open submitted work
+- Assign marks with maximum-mark validation
+- Add instructor feedback
+- Update submission review status
 
-### Navigation & UI Improvements
+### Security & Validation
 
-- Fixed student Dashboard → Continue Learning navigation
-- Fixed My Courses → Continue Learning navigation
-- Fixed enrolled Course → Learning Modules navigation
-- Standardized admin Quick Access navigation
-- Fixed admin navigation links across management pages
-- Improved module course-header spacing
-- Improved progress page layout
-- Improved Review Course button alignment
-- Added admin submission review toast notifications
-- Added responsive handling for notification messages
+- Password hashing using bcrypt
+- JWT authentication
+- Authentication middleware for protected APIs
+- Role-based Student/Admin authorization
+- Protected frontend page redirects
+- MongoDB ObjectId validation
+- Required-field validation
+- Course/module/assignment/submission validation
+- Enrollment ownership checks
+- Module/course relationship checks
+- Duplicate enrollment protection
+- Duplicate assignment submission protection
+- Assignment deadline enforcement
+- Marks range validation
+- Student-only and Admin-only API protection
+- Appropriate 400, 401, 403, 404, and 500 error handling
+
+## Technology Stack
+
+| Layer | Technologies |
+| --- | --- |
+| Frontend | HTML5, CSS3, JavaScript |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Authentication | JSON Web Token (JWT), bcryptjs |
+| API Style | REST API |
+| Development | VS Code, Nodemon |
+| Version Control | Git, GitHub |
+
+## System Architecture
+
+```text
+Browser / Frontend
+        |
+        | HTTP / REST API
+        v
+Node.js + Express.js Backend
+        |
+        | Mongoose ODM
+        v
+      MongoDB
+```
+
+The frontend communicates with the Express REST API. Authentication tokens identify the logged-in user, middleware protects restricted endpoints, role middleware separates Student and Admin operations, and Mongoose models persist data in MongoDB.
+
+## Project Structure
+
+```text
+KrushnaManthalkar_LMS/
+├── backend/
+│   ├── config/
+│   │   └── db.js
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   └── roleMiddleware.js
+│   ├── models/
+│   │   ├── Assignment.js
+│   │   ├── Course.js
+│   │   ├── Enrollment.js
+│   │   ├── Module.js
+│   │   ├── Submission.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── adminRoutes.js
+│   │   ├── assignmentRoutes.js
+│   │   ├── authRoutes.js
+│   │   ├── courseRoutes.js
+│   │   ├── enrollmentRoutes.js
+│   │   ├── moduleRoutes.js
+│   │   ├── progressRoutes.js
+│   │   └── submissionRoutes.js
+│   ├── utils/
+│   │   └── validation.js
+│   ├── package.json
+│   └── server.js
+├── frontend/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── JavaScript files for individual pages/workflows
+│   ├── admin-dashboard.html
+│   ├── admin-courses.html
+│   ├── admin-modules.html
+│   ├── admin-assignments.html
+│   ├── admin-students.html
+│   ├── admin-submissions.html
+│   ├── assignments.html
+│   ├── course-details.html
+│   ├── courses.html
+│   ├── dashboard.html
+│   ├── login.html
+│   ├── modules.html
+│   ├── my-courses.html
+│   ├── profile.html
+│   ├── progress.html
+│   ├── register.html
+│   └── submission.html
+└── README.md
+```
+
+## Database Design
+
+The application uses MongoDB through Mongoose.
+
+### User
+
+Stores registered users and their roles.
+
+Main fields:
+- `name`
+- `email`
+- `password` (hashed)
+- `role` — Student or Admin
+
+### Course
+
+Stores course information.
+
+Main fields:
+- `title`
+- `description`
+- `category`
+- `instructor`
+- `duration`
+- `difficulty`
+- `image`
+
+### Module
+
+Stores learning modules belonging to a course.
+
+Main fields:
+- `courseId`
+- `title`
+- `description`
+- `resourceLink`
+- `moduleOrder`
+
+Modules are ordered per course.
+
+### Assignment
+
+Stores course assignments.
+
+Main fields:
+- `courseId`
+- `title`
+- `description`
+- `deadline`
+- `maximumMarks`
+
+### Enrollment
+
+Connects students to enrolled courses and stores learning progress.
+
+Main fields:
+- `studentId`
+- `courseId`
+- `enrollmentDate`
+- `completedModules`
+- `progress`
+- `status`
+
+A student can enroll in a course only once.
+
+### Submission
+
+Stores student assignment submissions and Admin reviews.
+
+Main fields:
+- `assignmentId`
+- `studentId`
+- `submissionLink`
+- `submissionDate`
+- `marks`
+- `feedback`
+- `status`
+
+A student can submit an assignment only once.
+
+## Main Application Workflows
 
 ### Student Learning Flow
 
 ```text
-Student Login
+Register / Login
       ↓
-Dashboard
+Browse Courses
+      ↓
+View Course
+      ↓
+Enroll
+      ↓
+My Courses / Dashboard
       ↓
 Continue Learning
       ↓
@@ -193,124 +262,363 @@ Complete Module
       ↓
 Progress Updated
       ↓
-Progress Persists After Refresh
+Progress Persists
+      ↓
+Course Completed at 100%
+```
 
-## Phase 7 — Security & Validation Audit 🔐
+### Assignment Flow
 
-Phase 7 focuses on reviewing and strengthening the LMS security, authentication, authorization, backend validation, and error-handling mechanisms.
+```text
+Student Opens Assignment
+        ↓
+Submits Work Link
+        ↓
+Backend Validates Enrollment + Deadline + Duplicate Submission
+        ↓
+Admin Reviews Submission
+        ↓
+Marks + Feedback + Status Saved
+        ↓
+Student Views Review
+```
 
-### Security & Validation Areas
+## REST API Overview
 
-#### Authentication
-- Verify authentication middleware on protected APIs
-- Validate JWT/token-based authentication
-- Prevent unauthenticated access to protected resources
-- Verify login and session handling
-- Handle expired/invalid authentication tokens
+Base URL during local development:
 
-#### Authorization & Role Protection
-- Verify Admin-only API access
-- Verify Student-only API access
-- Prevent students from accessing admin APIs
-- Prevent admins from using student-only workflows where restricted
-- Verify frontend role-based page protection
+```text
+http://localhost:5000
+```
 
-#### Course API Validation
-- Validate course ID/ObjectId
-- Validate course title
-- Validate course description
-- Validate course category
-- Validate course duration
-- Validate course difficulty
-- Verify Admin-only create/update/delete operations
+### Authentication
 
-#### Module API Validation
-- Validate course ID
-- Validate module ID
-- Validate module title
-- Validate module description
-- Validate module order
-- Validate learning resource links
-- Verify Admin-only module management
-- Verify module ordering and deletion behavior
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| POST | `/api/auth/register` | Public | Register a student |
+| POST | `/api/auth/login` | Public | Log in |
+| GET | `/api/auth/me` | Authenticated | Get current user |
 
-#### Assignment API Validation
-- Validate assignment ID
-- Validate course/module references
-- Validate assignment title and description
-- Validate marks and required fields
-- Verify Admin-only assignment management
-- Verify Student-only submission workflow
+### Courses
 
-#### Submission Validation
-- Validate submission ownership
-- Validate assignment references
-- Validate submission data
-- Prevent unauthorized submission updates
-- Prevent duplicate submissions where restricted
-- Verify Admin review permissions
-- Validate marks and review status
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/courses` | Public | List courses |
+| GET | `/api/courses/:id` | Public | Get a course |
+| POST | `/api/courses` | Admin | Create course |
+| PUT | `/api/courses/:id` | Admin | Update course |
+| DELETE | `/api/courses/:id` | Admin | Delete course |
 
-#### Enrollment Security
-- Verify authenticated enrollment operations
-- Prevent unauthorized enrollment manipulation
-- Prevent duplicate course enrollment
-- Verify student ownership of enrollment data
+### Enrollments
 
-#### Progress Security
-- Verify authenticated progress access
-- Verify course/enrollment ownership
-- Prevent unauthorized progress updates
-- Verify module completion ownership
-- Verify progress calculation integrity
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| POST | `/api/enrollments` | Student | Enroll in course |
+| GET | `/api/enrollments/my` | Student | Get enrolled courses |
+| GET | `/api/enrollments/:courseId` | Student | Get enrollment for course |
 
-#### Frontend Security
-- Verify protected page redirects
-- Verify Admin dashboard protection
-- Verify Student dashboard protection
-- Verify authenticated-user redirects
-- Verify unauthorized users cannot access restricted pages directly
+### Modules
 
-### Error Handling
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/modules/course/:courseId` | Authenticated | Get course modules |
+| POST | `/api/modules` | Admin | Create module |
+| PUT | `/api/modules/:id` | Admin | Update module |
+| DELETE | `/api/modules/:id` | Admin | Delete module |
 
-Review API responses for:
+### Assignments
 
-- `400 Bad Request`
-- `401 Unauthorized`
-- `403 Forbidden`
-- `404 Not Found`
-- `500 Internal Server Error`
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/assignments/course/:courseId` | Authenticated | Get course assignments |
+| POST | `/api/assignments` | Admin | Create assignment |
+| PUT | `/api/assignments/:id` | Admin | Update assignment |
+| DELETE | `/api/assignments/:id` | Admin | Delete assignment |
 
-Ensure the frontend displays meaningful error messages without exposing unnecessary backend details.
+### Submissions
 
-### Security Testing
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| POST | `/api/submissions` | Student | Submit assignment |
+| GET | `/api/submissions/my` | Student | Get own submissions |
+| GET | `/api/submissions/assignment/:assignmentId` | Admin | Get assignment submissions |
+| PUT | `/api/submissions/:id` | Admin | Review submission |
 
-The following scenarios will be tested:
+### Progress
 
-- Unauthenticated user accessing protected API
-- Student accessing Admin API
-- Admin accessing Student-only API
-- Invalid ObjectId
-- Missing required fields
-- Invalid field values
-- Non-existent resource IDs
-- Unauthorized resource modification
-- Duplicate enrollment
-- Duplicate submission
-- Invalid progress/module completion request
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/progress/:courseId` | Student | Get course progress |
+| POST | `/api/progress/:courseId/module/:moduleId/complete` | Student | Complete a module |
 
-### Status
+### Admin
 
-⏳ In Progress
+| Method | Endpoint | Access | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/admin/dashboard` | Admin | Dashboard statistics |
+| GET | `/api/admin/students` | Admin | View students |
+| GET | `/api/admin/student-progress` | Admin | View student progress |
 
-### Phase 7 Completion Criteria
+## Installation and Local Setup
+
+### Prerequisites
+
+Install:
+
+- Node.js
+- npm
+- MongoDB locally or use MongoDB Atlas
+- Git
+- A modern web browser
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/KrushnaManthalkar/KrushnaManthalkar_LMS.git
+cd KrushnaManthalkar_LMS
+```
+
+### 2. Install backend dependencies
+
+```bash
+cd backend
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file inside the `backend` directory:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secure_jwt_secret
+PORT=5000
+```
+
+Do not commit the `.env` file. It is excluded from Git through `.gitignore`.
+
+### 4. Start the backend
+
+Development mode:
+
+```bash
+npm run dev
+```
+
+or:
+
+```bash
+npm start
+```
+
+The API runs on `http://localhost:5000` by default.
+
+### 5. Start the frontend
+
+Serve the `frontend` directory using a local web server such as the VS Code Live Server extension, then open the application in your browser.
+
+> If the frontend API base URL is changed for deployment, update the frontend configuration/code to point to the deployed backend URL.
+
+## Environment Variables
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `MONGO_URI` | Yes | MongoDB connection string |
+| `JWT_SECRET` | Yes | Secret used to sign and verify JWTs |
+| `PORT` | No | Backend port; defaults to 5000 |
+
+Never expose real credentials or secrets in the repository.
+
+## Testing
+
+The completed LMS workflow has been tested across the major Student and Admin flows.
+
+Testing covered:
+
+- Registration and login
+- Authentication and role-based authorization
+- Protected page/API access
+- Course CRUD
+- Course enrollment
+- Duplicate enrollment handling
+- Module CRUD and ordering
+- Module completion
+- Progress calculation and persistence
+- Assignment CRUD
+- Assignment submission
+- Enrollment verification before submission
+- Deadline validation
+- Duplicate submission prevention
+- Submission review
+- Marks validation
+- Instructor feedback
+- Student/Admin navigation
+- Invalid IDs and invalid requests
+- Responsive UI behavior
+
+## Development Progress
+
+| Phase | Work | Status |
+| --- | --- | --- |
+| 1 | Admin Course Management | ✅ Completed |
+| 2 | Admin Module Management | ✅ Completed |
+| 3 | Admin Assignment Management | ✅ Completed |
+| 4 | Admin Submission Review | ✅ Completed |
+| 5 | Admin Students & Progress | ✅ Completed |
+| 6 | Student Learning & Workflow Completion | ✅ Completed |
+| 7 | Security & Validation Audit | ✅ Completed |
+| 8 | Complete Workflow & UI Testing | ✅ Completed |
+
+### Phase 1 — Admin Course Management
+
+- Course CRUD
+- Category, duration, difficulty, description, and image support
+- Admin-only write operations
+- Backend persistence
+
+### Phase 2 — Admin Module Management
+
+- Module CRUD
+- Course-based module listing
+- Module ordering
+- Re-indexing after deletion
+- Learning resource links
+- Admin protection
+
+### Phase 3 — Admin Assignment Management
+
+- Assignment CRUD
+- Deadlines
+- Maximum marks
+- Course assignment listing
+- Admin protection
+
+### Phase 4 — Admin Submission Review
+
+- View submissions by assignment
+- Open submitted work
+- Marks validation
+- Feedback and status updates
+- Student access to review results
+
+### Phase 5 — Admin Students & Progress
+
+- Registered student listing
+- Enrolled course counts
+- Student enrollment/progress visibility
+- Admin-only access
+
+### Phase 6 — Student Learning & Workflow Completion
+
+- Dashboard continuation flow
+- Enrolled course learning navigation
+- Module completion and persistence
+- Progress page
+- Assignment submission workflow
+- Submission history
+- Marks/feedback visibility
+- Navigation and responsive UI improvements
+
+### Phase 7 — Security & Validation Audit
 
 - Authentication protection verified
-- Role-based authorization verified
-- Backend validation verified
-- Protected APIs tested
-- Unauthorized access blocked
-- Invalid requests handled correctly
+- Student/Admin authorization verified
+- Protected APIs checked
+- ObjectId and request validation added
+- Ownership and enrollment checks verified
+- Duplicate enrollment/submission protection
+- Assignment deadline validation
+- Marks validation
 - Frontend route guards verified
-- Error handling verified
-- Security test cases completed
+- Error-handling scenarios tested
+
+### Phase 8 — Complete Testing
+
+- Student end-to-end flow tested
+- Admin end-to-end flow tested
+- Student/Admin interaction tested
+- Data persistence checked
+- Navigation checked
+- Security/validation scenarios checked
+- Responsive behavior checked
+
+## Screenshots
+
+Major project screenshots should be added to the final project documentation/submission package. Recommended screenshots:
+
+1. Login / Registration
+2. Student Dashboard
+3. Courses
+4. My Courses
+5. Course Learning Modules
+6. Student Progress
+7. Assignments / Submission
+8. Admin Dashboard
+9. Admin Course Management
+10. Admin Module Management
+11. Admin Assignment Management
+12. Admin Students & Progress
+13. Admin Submission Review
+
+A dedicated `screenshots/` directory can be added to this repository later and linked here once the final screenshots are captured.
+
+## Deployment
+
+The project currently supports local execution. A public deployment URL has not been added to this repository yet.
+
+For deployment, the frontend and backend can be hosted separately, with the backend configured using secure environment variables and a MongoDB database connection. After deployment, add the final live application URL here.
+
+## Project Deliverables
+
+| Deliverable | Status |
+| --- | --- |
+| Complete source code | ✅ Complete |
+| GitHub repository | ✅ Complete |
+| Core LMS functionality | ✅ Complete |
+| Student/Admin workflows | ✅ Complete |
+| Security & validation audit | ✅ Complete |
+| Full workflow testing | ✅ Complete |
+| README documentation | ✅ Complete |
+| Database structure documentation | ✅ Included in this README |
+| Final screenshots | ⏳ To be added |
+| Project report | ⏳ To be prepared |
+| Project presentation | ⏳ To be prepared |
+| Demonstration video | ⏳ To be recorded |
+| Live deployment link | Optional / not currently available |
+
+## Future Improvements
+
+Possible future enhancements include:
+
+- Separate learning material types for PDFs, videos, source code, and practice resources
+- File upload support instead of link-only submissions/resources
+- Search and filtering improvements
+- Course announcements and notifications
+- Quizzes and automated assessments
+- Certificates after course completion
+- Email notifications
+- Password reset flow
+- Pagination for large datasets
+- Rich-text course/module content
+- Cloud file storage
+- Automated API/unit/integration tests
+- Public cloud deployment
+
+## Repository
+
+GitHub repository: [KrushnaManthalkar/KrushnaManthalkar_LMS](https://github.com/KrushnaManthalkar/KrushnaManthalkar_LMS)
+
+## Author
+
+**Krushna Manthalkar**
+
+MCA Student  
+Nutan Maharashtra Institute of Engineering and Technology (NMIET)
+
+## Project Status
+
+**Core LMS Development: Completed ✅**
+
+The main Student and Admin LMS workflows, backend/database integration, authentication, authorization, validation, progress tracking, assignment submission/review, and final workflow testing are complete.
+
+Remaining work is limited to the final submission package such as screenshots, report, presentation, demonstration video, and optional deployment.
