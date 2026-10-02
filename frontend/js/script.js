@@ -37,7 +37,6 @@ function loadIconLibrary() {
         return;
     }
 
-
     const iconLibrary =
         document.createElement("link");
 
@@ -67,11 +66,9 @@ function getCurrentPage() {
     const fileName =
         path.split("/").pop();
 
-
     if (!fileName || fileName === "") {
         return "home";
     }
-
 
     const pageMap = {
 
@@ -89,9 +86,9 @@ function getCurrentPage() {
 
         "dashboard.html":
             "dashboard",
-            
+
         "admin-dashboard.html":
-            "admin-dashboard",    
+            "admin-dashboard",
 
         "my-courses.html":
             "my-courses",
@@ -112,7 +109,6 @@ function getCurrentPage() {
             "profile"
 
     };
-
 
     return (
         pageMap[fileName] ||
@@ -135,17 +131,14 @@ async function loadComponent(
             containerId
         );
 
-
     if (!container) {
         return;
     }
-
 
     try {
 
         const response =
             await fetch(componentPath);
-
 
         if (!response.ok) {
 
@@ -155,14 +148,11 @@ async function loadComponent(
 
         }
 
-
         const html =
             await response.text();
 
-
         container.innerHTML =
             html;
-
 
     } catch (error) {
 
@@ -186,7 +176,6 @@ async function loadNavbar() {
         "navbar-container",
         "components/navbar.html"
     );
-
 
     initializeNavbar();
 
@@ -226,13 +215,11 @@ function initializeNavbar() {
             ".nav-link[data-page]"
         );
 
-
     desktopLinks.forEach(
         link => {
 
             const page =
                 link.dataset.page;
-
 
             link.classList.toggle(
                 "active",
@@ -252,13 +239,11 @@ function initializeNavbar() {
             ".mobile-nav-link[data-page]"
         );
 
-
     mobileLinks.forEach(
         link => {
 
             const page =
                 link.dataset.page;
-
 
             link.classList.toggle(
                 "active",
@@ -292,11 +277,9 @@ function initializeMobileMenu() {
             "mobileNav"
         );
 
-
     if (!button || !mobileNav) {
         return;
     }
-
 
     button.addEventListener(
         "click",
@@ -307,18 +290,15 @@ function initializeMobileMenu() {
                     "open"
                 );
 
-
             button.setAttribute(
                 "aria-expanded",
                 String(isOpen)
             );
 
-
             button.innerHTML =
                 isOpen
                     ? '<i class="fa-solid fa-xmark"></i>'
                     : '<i class="fa-solid fa-bars"></i>';
-
 
             document.body.classList.toggle(
                 "no-scroll",
@@ -369,11 +349,12 @@ function initializeMobileMenu() {
 
 /* =========================================================
    9. TOKEN HELPERS
+   Session-based authentication
    ========================================================= */
 
 function getAuthToken() {
 
-    return localStorage.getItem(
+    return sessionStorage.getItem(
         LMS_CONFIG.TOKEN_KEY
     );
 
@@ -386,8 +367,7 @@ function setAuthToken(token) {
         return;
     }
 
-
-    localStorage.setItem(
+    sessionStorage.setItem(
         LMS_CONFIG.TOKEN_KEY,
         token
     );
@@ -397,7 +377,7 @@ function setAuthToken(token) {
 
 function removeAuthToken() {
 
-    localStorage.removeItem(
+    sessionStorage.removeItem(
         LMS_CONFIG.TOKEN_KEY
     );
 
@@ -415,20 +395,19 @@ function isAuthenticated() {
 
 /* =========================================================
    10. USER HELPERS
+   Session-based user information
    ========================================================= */
 
 function getCurrentUser() {
 
     const userData =
-        localStorage.getItem(
+        sessionStorage.getItem(
             LMS_CONFIG.USER_KEY
         );
-
 
     if (!userData) {
         return null;
     }
-
 
     try {
 
@@ -443,7 +422,7 @@ function getCurrentUser() {
             error
         );
 
-        localStorage.removeItem(
+        sessionStorage.removeItem(
             LMS_CONFIG.USER_KEY
         );
 
@@ -460,8 +439,7 @@ function setCurrentUser(user) {
         return;
     }
 
-
-    localStorage.setItem(
+    sessionStorage.setItem(
         LMS_CONFIG.USER_KEY,
         JSON.stringify(user)
     );
@@ -471,7 +449,7 @@ function setCurrentUser(user) {
 
 function removeCurrentUser() {
 
-    localStorage.removeItem(
+    sessionStorage.removeItem(
         LMS_CONFIG.USER_KEY
     );
 
@@ -488,7 +466,6 @@ function logoutUser() {
 
     removeCurrentUser();
 
-
     window.location.href =
         "login.html";
 
@@ -504,16 +481,13 @@ function updateAuthenticationUI() {
     const authenticated =
         isAuthenticated();
 
-
     const user =
         getCurrentUser();
-
 
     const loginLinks =
         document.querySelectorAll(
             '[data-auth-link="login"]'
         );
-
 
     const registerLinks =
         document.querySelectorAll(
@@ -530,8 +504,13 @@ function updateAuthenticationUI() {
         loginLinks.forEach(
             link => {
 
-                link.classList.remove("lms-hidden");
-                link.classList.add("lms-visible");
+                link.classList.remove(
+                    "lms-hidden"
+                );
+
+                link.classList.add(
+                    "lms-visible"
+                );
 
             }
         );
@@ -540,47 +519,56 @@ function updateAuthenticationUI() {
         registerLinks.forEach(
             link => {
 
-                link.classList.remove("lms-hidden");
-                link.classList.add("lms-visible");
+                link.classList.remove(
+                    "lms-hidden"
+                );
+
+                link.classList.add(
+                    "lms-visible"
+                );
 
             }
         );
-
 
         return;
     }
 
 
     /*
- * Logged in
- */
+     * Logged in
+     */
 
-const dashboardUrl =
-    user && user.role === "admin"
-        ? "admin-dashboard.html"
-        : "dashboard.html";
-
-
-const dashboardLabel =
-    user && user.role === "admin"
-        ? "Admin Dashboard"
-        : "Dashboard";
+    const dashboardUrl =
+        user && user.role === "admin"
+            ? "admin-dashboard.html"
+            : "dashboard.html";
 
 
-loginLinks.forEach(
-    link => {
+    const dashboardLabel =
+        user && user.role === "admin"
+            ? "Admin Dashboard"
+            : "Dashboard";
 
-        link.textContent =
-            dashboardLabel;
 
-        link.href =
-            dashboardUrl;
+    loginLinks.forEach(
+        link => {
 
-        link.classList.remove("lms-hidden");
-        link.classList.add("lms-visible");
+            link.textContent =
+                dashboardLabel;
 
-    }
-);
+            link.href =
+                dashboardUrl;
+
+            link.classList.remove(
+                "lms-hidden"
+            );
+
+            link.classList.add(
+                "lms-visible"
+            );
+
+        }
+    );
 
 
     registerLinks.forEach(
@@ -592,8 +580,13 @@ loginLinks.forEach(
             link.href =
                 "#";
 
-            link.classList.remove("lms-hidden");
-            link.classList.add("lms-visible");
+            link.classList.remove(
+                "lms-hidden"
+            );
+
+            link.classList.add(
+                "lms-visible"
+            );
 
 
             /*
@@ -731,7 +724,6 @@ async function checkBackendStatus() {
             await fetch(
                 LMS_CONFIG.BACKEND_URL
             );
-
 
         if (response.ok) {
 
